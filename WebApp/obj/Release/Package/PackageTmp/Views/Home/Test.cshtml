@@ -1,0 +1,30 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>pjax</title>
+    <meta charset="utf-8">
+</head>
+<body>
+  <h1>My Site</h1>
+  <div>
+    <input type="button" id="th" value="GO">
+  </div>
+  <div id="container"></div>    
+</body>
+<script src="~/Content/js/jquery-1.9.1.min.js"></script>
+<script src="~/Content/js/jquery.pjax.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#th').click(function () {
+            $.pjax({
+                url: '/Home/PTest',
+                container: '#container'
+            });
+        });
+    });
+</script>
+</html>

@@ -1,0 +1,196 @@
+﻿@{
+    ViewBag.Title = "视频添加";
+    Layout = "~/Views/Shared/_LayoutCenter.cshtml";
+}
+<div style="margin-left: 20px; margin-top: 5px;">
+    <div class="layui-elem-quote">
+        <p>视频添加</p>
+    </div>
+    <br />
+    <div class="layui-form">
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">分类</label>
+            <div class="layui-input-block">
+                <select name="city" lay-verify="required" id="txtsort">
+                    <option value=""></option>
+                    @{List<Model.zhancaiw_category> plist = ViewData["plist"] as List<Model.zhancaiw_category>;}
+                    @foreach (var item in plist)
+                    {
+                        <option value="@item.categoryID">@item.categoryName</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">二级分类</label>
+            <div class="twonav">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">标题</label>
+            <div class="layui-input-block">
+                <input type="text" id="txttitle" required lay-verify="required" placeholder="请输入视频标题" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">作者</label>
+            <div class="layui-input-block">
+                <input type="text" id="txtauthor" required lay-verify="required" placeholder="请输入视频作者" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">封面</label>
+            <div class="layui-input-block">
+                <img src="" style="width: 280px; height: 158px;" id="txtimg" />&nbsp;<input type="file" name="file" class="layui-upload-file">&nbsp;<span>推荐尺寸280x158</span>
+                <input type="hidden" id="txtheadimage" />
+            </div>
+        </div>
+
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">描述</label>
+            <div class="layui-input-block">
+                <textarea id="txtdesc" placeholder="请输入描述" class="layui-textarea" required lay-verify="required"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">播放地址</label>
+            <div class="layui-input-block">
+                <textarea id="txtvideourl" placeholder="请输入视频播放地址" class="layui-textarea" required lay-verify="required"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">版权地址</label>
+            <div class="layui-input-block">
+                <textarea id="txtsourceurl" placeholder="请输入视频版权所在地址" class="layui-textarea"></textarea>
+            </div>
+        </div>
+
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="formDemo" onclick="btn_videoadd()">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section centerfooter{
+    <script type="text/javascript">
+        //上传
+        layui.upload({
+            url: '/Center/Upload?action=videocover'
+            , success: function (jsondata) {
+                if (jsondata.status == 0) {
+                    layer.msg(jsondata.msg);
+                    $("#txtimg").attr("src", jsondata.data);
+                    $("#txtheadimage").val(jsondata.data);
+                } else {
+                    layer.msg(jsondata.msg);
+                }
+
+                //console.log(res); //上传成功返回值，必须为json格式
+            }
+        });
+
+        //添加视频
+        function btn_videoadd() {
+            var sortid = $("#txtsort").val();
+            if (sortid == "" || sortid == null) {
+                layer.msg("请选择一级分类！");
+                return;
+            }
+
+            var arr = '';
+            $(".twonav input:checked").each(function () {
+                arr += $(this).val() + ',';
+            });
+
+            if (arr==''||arr==null) {
+                layer.msg("请选择二级分类！");
+                return;
+            }
+
+            var title = $("#txttitle").val();
+            var author = $("#txtauthor").val();
+
+            var imgurl = $("#txtheadimage").val();
+            if (imgurl == null || imgurl == "") {
+                layer.msg("请先上传图片再提交！");
+                return;
+            }
+
+
+
+            var desc = $("#txtdesc").val();
+
+            var url = $("#txtvideourl").val();
+
+            var sourceurl = $("#txtsourceurl").val();
+
+            var pams = {
+                sortid: sortid,
+                selval: arr,
+                title: title,
+                author: author,
+                imgurl: imgurl,
+                desc: desc,
+                url: encodeURIComponent(url),
+                sourceurl: encodeURIComponent(sourceurl)
+            };
+
+            $.post("/Center/VideoAdd", pams, function (serverData) {
+                var jsondata = $.parseJSON(serverData);
+                if (jsondata.status == 0) {
+                    layer.msg(jsondata.msg);
+                    window.location = "/center/videolist.html";
+                } else {
+                    layer.msg(jsondata.msg);
+                }
+            });
+        }
+
+        $(".layui-anim dd").click(function () {
+            var id = $(this).attr("lay-value");
+            postnavdata(id);
+        });
+
+
+
+        var form = layui.form();
+
+        function postnavdata(id) {
+            $.post("/Center/PostNavList", { id: id }, function (serverData) {
+                var jsondata = $.parseJSON(serverData);
+                if (jsondata.status == 0) {
+                    var _html = '';
+                    for (var i = 0; i < jsondata.data.length; i++) {
+                        _html += '<div class="layui-input-block">'
+                        for (var j = 0; j < jsondata.data[i].length; j++) {
+                            if (jsondata.data[i][j].categoryPID == 2) {
+                                _html += '<span>' + jsondata.data[i][j].categoryName + '</span>&nbsp;&nbsp;';
+                            } else {
+                                _html += '<input type="radio" name="sorttwo' + i + '" value="' + jsondata.data[i][j].categoryID + '" title="' + jsondata.data[i][j].categoryName + '"><div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i><span>' + jsondata.data[i][j].categoryName + '</span></div>';
+                            }
+                        }
+                        _html += '</div>';
+
+                    }
+                    $(".twonav").html(_html);
+                    form.render();
+                } else {
+                    $(".twonav").html('');
+                    layer.msg(jsondata.msg);
+                }
+            });
+        }
+
+
+
+    </script>
+}

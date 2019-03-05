@@ -1,0 +1,88 @@
+﻿@{
+    ViewBag.Title = "链接列表";
+    Layout = "~/Views/Shared/_LayoutCenter.cshtml";
+}
+
+@{List<Model.zhancaiw_category> list = ViewData["list"] as List<Model.zhancaiw_category>;}
+
+<div style="margin-left: 20px; margin-top: 5px;">
+    <div class="layui-elem-quote">
+        <p>导航列表</p>
+    </div>
+    <br />
+    <div>
+        <table class="layui-table">
+            <colgroup>
+                <col width="150">
+                <col>
+                <col width="80">
+                <col width="80">
+                <col width="120">
+                <col width="120">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>名称</th>
+                    <th>PID</th>
+                    <th>url参数</th>
+                    <th>添加时间</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (list != null)
+                {
+                    foreach (var item in list)
+                    {
+                    <tr>
+                        <td>@item.categoryID</td>
+                        <td>@item.categoryName</td>
+                        <td>@item.categoryPID</td>
+                        <td>@item.urlParams</td>
+                        <td>@Convert.ToDateTime(item.addTime).ToString("yyyy-MM-dd HH:mm:ss")</td>
+                        <td>
+                            <button class="layui-btn layui-btn-small" title="点击编辑" onclick="window.location='/center/navedit/@(item.categoryID).html'"><i class="layui-icon"></i></button>
+                            <button class="layui-btn layui-btn-small" title="点击删除" onclick="btn_videodelete(@item.categoryID)"><i class="layui-icon"></i></button>
+                        </td>
+                    </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="6">暂无数据！</td>
+                    </tr>
+                }              
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section centerfooter{
+    <script type="text/javascript">       
+        function btn_videodelete(id) {
+            //配置一个透明的询问框
+            layer.msg('确定删除该视频吗？删除后不可恢复啊！', {
+                time: 20000, //20s后自动关闭
+                btn: ['确定删除', '取消']
+                ,success: function(layero){
+                    var btn = layero.find('.layui-layer-btn');
+                    btn.find('.layui-layer-btn0').click(
+                        function () {
+                            $.post("/Center/NavDelete", { id: id }, function (serverData) {
+                                var jsondata = $.parseJSON(serverData);
+                                if (jsondata.status==0) {
+                                    layer.msg(jsondata.msg);
+                                    window.location.reload();
+                                } else {
+                                    layer.msg(jsondata.msg);
+                                }
+                            });
+                        }
+                        );
+                }
+            });
+        }
+    </script>
+}

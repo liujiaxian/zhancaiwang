@@ -1,0 +1,144 @@
+@import 'base.scss';
+
+.index-hot-area {
+    .h2 {
+        display: inline-block;
+        padding-right: 15px;
+    }
+    .img-area {
+        padding-left: 0px;
+        margin-right: -20px;
+        width: 100%;
+        .list-group-item {
+            box-sizing: border-box;
+            padding-bottom: 44px;
+            width: 25%;
+            margin: 0px;
+            overflow: visible;
+            .mv-list {
+                visibility: visible;
+                margin-right: 20px;
+                height: 240px;
+                >a {
+                    @include listGroup;
+                    display: block;
+                    margin-bottom: 15px;
+                    .mv-pay-icon {
+                        position: absolute;
+                        opacity: 0;
+                        left: 50%;
+                        top: 50%;
+                        margin-left: -21px;
+                        margin-top: -21px;
+                        font-size: 42px;
+                        z-index: 50;
+                        color: #e8e8e8;
+                        -webkit-transition: opacity 1s ease-in-out;
+                        -moz-transition: opacity 1s ease-in-out;
+                        -o-transition: opacity 1s ease-in-out;
+                        transition: opacity 1s ease-in-out;
+                    }
+                    img {
+                        max-width: 100%;
+                        -webkit-transform: scale(1);
+                        transform: scale(1);
+                        -webkit-transition: -webkit-transform 1s;
+                        transition: -webkit-transform 1s;
+                        transition: transform 1s;
+                        transition: transform 1s, -webkit-transform 1s;
+                    }
+                    &:hover {
+                        img {
+                            -webkit-transform: scale(1.2);
+                            transform: scale(1.2);
+                            -webkit-transition: -webkit-transform 1s;
+                            transition: -webkit-transform 1s;
+                            transition: transform 1s;
+                            transition: transform 1s, -webkit-transform 1s;
+                        }
+                        .mv-pay-icon {
+                            opacity: 1;
+                            filter: alpha(opacity=1);
+                        }
+                    }
+                }
+                .mv_list_title {
+                    font-size: 14.5px;
+                    padding: 0px;
+                    line-height: 1.5rem;
+                }
+                .mv_list_singer {
+                    a {
+                        font-size: 13px;
+                        color: #999;
+                        line-height: 1.5rem;
+                    }
+                }
+                .mv_list_info {
+                    font-size: 13px;
+                    color: #999;
+                }
+            }
+        }
+    }
+}
+
+.index-inline-block {
+    .dl-group {
+        width: 100%;
+        margin-bottom: 30px;
+        overflow: hidden;
+    }
+    dd {
+        @include pull();
+        line-height: 1.5rem;
+        width: 144px;
+    }
+}
+
+.index-lyrics {
+    .list-group-item {
+        padding: 8px 16px;
+        border: 1px solid $colorTransition;
+        color: $colorTransition;
+        margin-right: 10px;
+        &.active,
+        &:hover {
+            a {
+                color: $colorMain;
+            }
+            border: 1px solid $colorMain;
+            color: $colorMain;
+        }
+    }
+}
+
+.lyrics {
+    .plane {
+        width: 379px;
+        background-color: #fff;
+        margin: 0px;
+        margin-right: 21px;
+    }
+    .plane dt {
+        width: 179px;
+    }
+    .lyrucs-original {
+        margin-left: 10px;
+        width: 160px;
+    }
+}
+
+.plane {
+    .plane-title {
+        height: 35px;
+        line-height: 35px;
+        overflow: hidden;
+        border-bottom: 1px #e8e8e8 solid;
+        margin: 0px 10px;
+    }
+    .plane-body {
+        font-size: 13px;
+        color: #999;
+    }
+}

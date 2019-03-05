@@ -1,0 +1,73 @@
+﻿@{
+    ViewBag.Title = "链接编辑";
+    Layout = "~/Views/Shared/_LayoutCenter.cshtml";
+}
+@{
+    Model.zhancaiw_category navmodel = ViewData["navmodel"] as Model.zhancaiw_category;
+}
+
+<div style="margin-left: 20px; margin-top: 5px;">
+    <div class="layui-elem-quote">
+        <p>导航编辑</p>
+    </div>
+    <br />
+    <div class="layui-form">
+        <div class="layui-form-item">
+            <label class="layui-form-label">导航名称</label>
+            <div class="layui-input-block">
+                <input type="text" id="txtname" required lay-verify="required" placeholder="请输入导航名称" autocomplete="off" class="layui-input" value="@navmodel.categoryName">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">url参数</label>
+            <div class="layui-input-block">
+                <input type="text" id="txturl" placeholder="编辑一级导航时需要输入，并联系管理员添加相应的页面" autocomplete="off" class="layui-input" value="@navmodel.urlParams">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="formDemo" onclick="btn_navadd()">立即提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section centerfooter{
+    <script type="text/javascript">
+        function btn_navadd() {
+            var name = $("#txtname").val();
+            if (name == "" || name == null) {
+                layer.msg("导航名称不能为空！");
+                return;
+            }
+
+            var url = $("#txturl").val();
+            var pid = '@navmodel.categoryPID';
+            if (pid=="0") {
+                if (url == "" || url == null) {
+                    layer.msg("url参数不能为空！");
+                    return;
+                }
+            }
+            
+            var pams = {
+                id: '@navmodel.categoryID',
+                name: name,
+                url: url
+            };
+
+            $.post("/Center/NavEdit", pams, function (serverData) {
+                var jsondata = $.parseJSON(serverData);
+                if (jsondata.status == 0) {
+                    layer.msg(jsondata.msg);
+                    window.location = "/center/navlist.html";
+                } else {
+                    layer.msg(jsondata.msg);
+                }
+            });
+        }
+
+    </script>
+}

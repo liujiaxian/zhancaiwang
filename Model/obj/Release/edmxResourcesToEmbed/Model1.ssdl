@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="bds256641637_dbModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="bds256641637_dbModelStoreContainer">
+    <EntitySet Name="zhancaiw_category" EntityType="bds256641637_dbModel.Store.zhancaiw_category" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="zhancaiw_email" EntityType="bds256641637_dbModel.Store.zhancaiw_email" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="zhancaiw_feedback" EntityType="bds256641637_dbModel.Store.zhancaiw_feedback" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="zhancaiw_links" EntityType="bds256641637_dbModel.Store.zhancaiw_links" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="zhancaiw_look" EntityType="bds256641637_dbModel.Store.zhancaiw_look" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="zhancaiw_tanmu" EntityType="bds256641637_dbModel.Store.zhancaiw_tanmu" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="zhancaiw_user" EntityType="bds256641637_dbModel.Store.zhancaiw_user" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="zhancaiw_video" EntityType="bds256641637_dbModel.Store.zhancaiw_video" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="zhancaiw_vyw_links_user" EntityType="bds256641637_dbModel.Store.zhancaiw_vyw_links_user" store:Type="Views" store:Schema="dbo" store:Name="zhancaiw_vyw_links_user">
+      <DefiningQuery>SELECT 
+      [zhancaiw_vyw_links_user].[linkID] AS [linkID], 
+      [zhancaiw_vyw_links_user].[linkName] AS [linkName], 
+      [zhancaiw_vyw_links_user].[linkUrl] AS [linkUrl], 
+      [zhancaiw_vyw_links_user].[isDelete] AS [isDelete], 
+      [zhancaiw_vyw_links_user].[userID] AS [userID], 
+      [zhancaiw_vyw_links_user].[addTime] AS [addTime], 
+      [zhancaiw_vyw_links_user].[updateTime] AS [updateTime], 
+      [zhancaiw_vyw_links_user].[roleID] AS [roleID], 
+      [zhancaiw_vyw_links_user].[nickName] AS [nickName], 
+      [zhancaiw_vyw_links_user].[userName] AS [userName], 
+      [zhancaiw_vyw_links_user].[email] AS [email]
+      FROM [dbo].[zhancaiw_vyw_links_user] AS [zhancaiw_vyw_links_user]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="zhancaiw_vyw_tanmu_video_user" EntityType="bds256641637_dbModel.Store.zhancaiw_vyw_tanmu_video_user" store:Type="Views" store:Schema="dbo" store:Name="zhancaiw_vyw_tanmu_video_user">
+      <DefiningQuery>SELECT 
+      [zhancaiw_vyw_tanmu_video_user].[videoID] AS [videoID], 
+      [zhancaiw_vyw_tanmu_video_user].[userID] AS [userID], 
+      [zhancaiw_vyw_tanmu_video_user].[ID] AS [ID], 
+      [zhancaiw_vyw_tanmu_video_user].[text] AS [text], 
+      [zhancaiw_vyw_tanmu_video_user].[isShow] AS [isShow], 
+      [zhancaiw_vyw_tanmu_video_user].[color] AS [color], 
+      [zhancaiw_vyw_tanmu_video_user].[type] AS [type], 
+      [zhancaiw_vyw_tanmu_video_user].[addTime] AS [addTime], 
+      [zhancaiw_vyw_tanmu_video_user].[nickName] AS [nickName], 
+      [zhancaiw_vyw_tanmu_video_user].[email] AS [email], 
+      [zhancaiw_vyw_tanmu_video_user].[roleID] AS [roleID], 
+      [zhancaiw_vyw_tanmu_video_user].[time] AS [time]
+      FROM [dbo].[zhancaiw_vyw_tanmu_video_user] AS [zhancaiw_vyw_tanmu_video_user]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+  <EntityType Name="zhancaiw_category">
+    <Key>
+      <PropertyRef Name="categoryID" />
+    </Key>
+    <Property Name="categoryID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="categoryName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="categoryPID" Type="int" Nullable="false" />
+    <Property Name="urlParams" Type="nvarchar" MaxLength="50" />
+    <Property Name="addTime" Type="datetime" />
+    <Property Name="updateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="zhancaiw_email">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="emailLast" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="emailUrl" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="zhancaiw_feedback">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="describe" Type="nvarchar" Nullable="false" MaxLength="500" />
+    <Property Name="qq" Type="int" Nullable="false" />
+    <Property Name="userID" Type="int" Nullable="false" />
+    <Property Name="addTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="zhancaiw_links">
+    <Key>
+      <PropertyRef Name="linkID" />
+    </Key>
+    <Property Name="linkID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="linkName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="linkUrl" Type="nvarchar" Nullable="false" MaxLength="1024" />
+    <Property Name="isDelete" Type="bit" />
+    <Property Name="userID" Type="int" />
+    <Property Name="addTime" Type="datetime" />
+    <Property Name="updateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="zhancaiw_look">
+    <Key>
+      <PropertyRef Name="lookID" />
+    </Key>
+    <Property Name="lookID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ipAddress" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="videoID" Type="int" Nullable="false" />
+    <Property Name="addTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="zhancaiw_tanmu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="userID" Type="int" Nullable="false" />
+    <Property Name="videoID" Type="int" />
+    <Property Name="text" Type="nvarchar" Nullable="false" MaxLength="250" />
+    <Property Name="isShow" Type="bit" />
+    <Property Name="color" Type="nvarchar" MaxLength="50" />
+    <Property Name="type" Type="nvarchar" MaxLength="50" />
+    <Property Name="time" Type="float" />
+    <Property Name="addTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="zhancaiw_user">
+    <Key>
+      <PropertyRef Name="userID" />
+    </Key>
+    <Property Name="userID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="openID" Type="nvarchar" MaxLength="255" />
+    <Property Name="userName" Type="nvarchar" MaxLength="50" />
+    <Property Name="userPwd" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="aover" Type="nvarchar" MaxLength="1024" />
+    <Property Name="email" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="lastIP" Type="nvarchar" MaxLength="20" />
+    <Property Name="birthday" Type="datetime" />
+    <Property Name="sex" Type="int" />
+    <Property Name="hobby" Type="nvarchar" MaxLength="250" />
+    <Property Name="introduce" Type="nvarchar" MaxLength="250" />
+    <Property Name="nickName" Type="nvarchar" MaxLength="50" />
+    <Property Name="roleID" Type="int" />
+    <Property Name="lastTime" Type="datetime" />
+    <Property Name="activeToken" Type="nvarchar" MaxLength="50" />
+    <Property Name="activeTime" Type="datetime" />
+    <Property Name="activeStatus" Type="int" />
+    <Property Name="regTime" Type="datetime" />
+    <Property Name="updateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="zhancaiw_video">
+    <Key>
+      <PropertyRef Name="videoID" />
+    </Key>
+    <Property Name="videoID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="userID" Type="int" Nullable="false" />
+    <Property Name="sortID" Type="int" Nullable="false" />
+    <Property Name="categoryID" Type="nvarchar" MaxLength="50" />
+    <Property Name="videoTitle" Type="nvarchar" Nullable="false" MaxLength="250" />
+    <Property Name="videoCover" Type="nvarchar" MaxLength="1024" />
+    <Property Name="videoUrl" Type="nvarchar" MaxLength="1024" />
+    <Property Name="videoAuthor" Type="nvarchar" MaxLength="50" />
+    <Property Name="videoSourceUrl" Type="nvarchar" MaxLength="1024" />
+    <Property Name="videoDescripe" Type="nvarchar" MaxLength="250" />
+    <Property Name="videoStatus" Type="int" />
+    <Property Name="clickCount" Type="int" />
+    <Property Name="isRecommend" Type="bit" />
+    <Property Name="addTime" Type="datetime" />
+    <Property Name="updateTime" Type="datetime" />
+    <Property Name="releaseTime" Type="datetime" />
+  </EntityType>
+  <!--生成过程中发现错误:
+      警告 6002: 表/视图“bds256641637_db.dbo.zhancaiw_vyw_links_user”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+  <EntityType Name="zhancaiw_vyw_links_user">
+    <Key>
+      <PropertyRef Name="linkID" />
+      <PropertyRef Name="linkName" />
+      <PropertyRef Name="linkUrl" />
+      <PropertyRef Name="email" />
+    </Key>
+    <Property Name="linkID" Type="int" Nullable="false" />
+    <Property Name="linkName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="linkUrl" Type="nvarchar" Nullable="false" MaxLength="1024" />
+    <Property Name="isDelete" Type="bit" />
+    <Property Name="userID" Type="int" />
+    <Property Name="addTime" Type="datetime" />
+    <Property Name="updateTime" Type="datetime" />
+    <Property Name="roleID" Type="int" />
+    <Property Name="nickName" Type="nvarchar" MaxLength="50" />
+    <Property Name="userName" Type="nvarchar" MaxLength="50" />
+    <Property Name="email" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <!--生成过程中发现错误:
+      警告 6002: 表/视图“bds256641637_db.dbo.zhancaiw_vyw_tanmu_video_user”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+  <EntityType Name="zhancaiw_vyw_tanmu_video_user">
+    <Key>
+      <PropertyRef Name="userID" />
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="text" />
+      <PropertyRef Name="email" />
+    </Key>
+    <Property Name="videoID" Type="int" />
+    <Property Name="userID" Type="int" Nullable="false" />
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="text" Type="nvarchar" Nullable="false" MaxLength="250" />
+    <Property Name="isShow" Type="bit" />
+    <Property Name="color" Type="nvarchar" MaxLength="50" />
+    <Property Name="type" Type="nvarchar" MaxLength="50" />
+    <Property Name="addTime" Type="datetime" />
+    <Property Name="nickName" Type="nvarchar" MaxLength="50" />
+    <Property Name="email" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="roleID" Type="int" />
+    <Property Name="time" Type="float" />
+  </EntityType>
+</Schema>

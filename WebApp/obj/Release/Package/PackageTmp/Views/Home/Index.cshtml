@@ -1,0 +1,221 @@
+﻿@{
+    ViewBag.Title = "首页";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+@section header{
+    
+    <style type="text/css">
+    </style>
+}
+
+<div class="container">
+    <div class="index-hot-area pull-left">
+        <h2 class="h2 border-right-success"><a href="#" title="点击查看更多">热门视频</a></h2>
+        <div class="index-hot-area-cont">
+            <div class="index-inline-block">
+                <ul class="list-group img-area hotvideo">
+                    @{List<Model.zhancaiw_video> videolist = ViewData["videolist"] as List<Model.zhancaiw_video>;}
+                    @foreach (var item in videolist)
+                    {
+                          <li class="list-group-item span-1">
+                        <div class="mv-list">
+                            <a href="/home/detail/@(item.videoID).html" title="@item.videoTitle">
+                                <i class="iconfont mv-pay-icon">&#xe678;</i>
+                                <img src="@item.videoCover" alt="@item.videoTitle" style="width:280px;height:158px;" />
+                            </a>
+                            <div class="mv_list_title">
+                                <a href="javascript:void(0);" title="@item.videoTitle">@item.videoTitle</a>
+                            </div>
+                            <div class="mv_list_singer">
+                                <a href="javascript:;" class="" title="@item.videoAuthor">@item.videoAuthor</a>
+                            </div>
+                            <div class="mv_list_info">
+                            @Convert.ToDateTime(item.addTime).ToString("yyyy-MM-dd HH:mm:ss")
+                            </div>
+                        </div>
+                    </li>
+
+                    }
+                   
+                </ul>
+            </div>
+        </div>
+
+        <h2 class="h2 border-right-success"><a href="#" title="点击查看更多">热门音乐</a></h2>
+        <div class="index-hot-area-cont">
+            <div class="index-inline-block">
+                <ul class="list-group img-area hotvideo">
+                     @{List<Model.zhancaiw_video> musiclist = ViewData["musiclist"] as List<Model.zhancaiw_video>;}
+                    @foreach (var item in musiclist)
+                    {
+                          <li class="list-group-item span-1">
+                        <div class="mv-list">
+                            <a href="/home/detail/@(item.videoID).html" title="@item.videoTitle">
+                                <i class="iconfont mv-pay-icon">&#xe678;</i>
+                                <img src="@item.videoCover" alt="@item.videoTitle" style="width:280px;height:158px;" />
+                            </a>
+                            <div class="mv_list_title">
+                                <a href="javascript:void(0);" title="@item.videoTitle">@item.videoTitle</a>
+                            </div>
+                            <div class="mv_list_singer">
+                                <a href="javascript:;" class="" title="@item.videoAuthor">@item.videoAuthor</a>
+                            </div>
+                            <div class="mv_list_info">
+                            @Convert.ToDateTime(item.addTime).ToString("yyyy-MM-dd HH:mm:ss")
+                            </div>
+                        </div>
+                    </li>
+
+                    }
+                   
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--广告区域-->
+<div class="container">
+    <img src="http://afp.alicdn.com/afp-creative/creative/u114914251/163f1140392d288f6cf6e5b01d363f4b.jpg" alt="一直广告 " width="100%" />
+</div>
+<!--end 广告区域-->
+<!--<div class="container">
+            <div class="index-hot-area">
+                <h2 class="h2 border-right-success">歌词鉴赏</h2>
+                <div class="index-hot-area-cont">
+                    <div class="index-lyrics">
+                        <ul class="list-group">
+                            <li class="list-group-item active pull-left"><a href="javascript:void(0);">热门中文歌词</a></li>
+                            <li class="list-group-item pull-left"><a href="javascript:void(0);">最新中文歌词</a></li>
+                        </ul>
+                    </div>
+                    <article class="lyrics">
+                        <div class="plane  span-4">
+                            <div class="plane-title">
+                                <span class="pull-left">歌曲</span>
+                                <span class="pull-right" style="width:160px">原创歌曲</span>
+                            </div>
+                            <div class="plane-body">
+                                <dl>
+                                    <dt class="lyrucs-song pull-left span-2">
+                                        《冻死人》
+                                    </dt>
+                                    <dd class="lyrucs-original pull-left span-2">
+                                        《中国人》
+                                    </dd>
+                                    <dt class="lyrucs-song pull-left span-2">
+                                        《冻死人》
+                                    </dt>
+                                    <dd class="lyrucs-original pull-left span-2">
+                                        《中国人》
+                                    </dd>
+                                    <dt class="lyrucs-song pull-left span-2">
+                                        《冻死人》
+                                    </dt>
+                                    <dd class="lyrucs-original pull-left span-2">
+                                        《中国人》
+                                    </dd>
+                                    <dt class="lyrucs-song pull-left span-2">
+                                        《冻死人》
+                                    </dt>
+                                    <dd class="lyrucs-original pull-left span-2">
+                                        《中国人》
+                                    </dd>
+                                    <dt class="lyrucs-song pull-left span-2">
+                                        《冻死人》
+                                    </dt>
+                                    <dd class="lyrucs-original pull-left span-2">
+                                        《中国人》
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="plane  span-4">
+                            <div class="plane-title">
+                                <span class="pull-left">歌曲</span>
+                                <span class="pull-right" style="width:160px">原创歌曲</span>
+                            </div>
+                            <div class="plane-body">
+                                <dl>
+                                    <dt class="lyrucs-song pull-left span-2">
+                                        《冻死人》
+                                    </dt>
+                                    <dd class="lyrucs-original pull-left span-2">
+                                        《中国人》
+                                    </dd>
+                                    <dt class="lyrucs-song pull-left span-2">
+                                        《冻死人》
+                                    </dt>
+                                    <dd class="lyrucs-original pull-left span-2">
+                                        《中国人》
+                                    </dd>
+                                    <dt class="lyrucs-song pull-left span-2">
+                                        《冻死人》
+                                    </dt>
+                                    <dd class="lyrucs-original pull-left span-2">
+                                        《中国人》
+                                    </dd>
+                                    <dt class="lyrucs-song pull-left span-2">
+                                        《冻死人》
+                                    </dt>
+                                    <dd class="lyrucs-original pull-left span-2">
+                                        《中国人》
+                                    </dd>
+                                    <dt class="lyrucs-song pull-left span-2">
+                                        《冻死人》
+                                    </dt>
+                                    <dd class="lyrucs-original pull-left span-2">
+                                        《中国人》
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="plane  span-4">
+                            <div class="plane-title">
+                                <span class="pull-left">歌曲</span>
+                                <span class="pull-right" style="width:160px">原创歌曲</span>
+                            </div>
+                            <div class="plane-body">
+                                <dl>
+                                    <dt class="lyrucs-song pull-left span-2">
+                                        《冻死人》
+                                    </dt>
+                                    <dd class="lyrucs-original pull-left span-2">
+                                        《中国人》
+                                    </dd>
+                                    <dt class="lyrucs-song pull-left span-2">
+                                        《冻死人》
+                                    </dt>
+                                    <dd class="lyrucs-original pull-left span-2">
+                                        《中国人》
+                                    </dd>
+                                    <dt class="lyrucs-song pull-left span-2">
+                                        《冻死人》
+                                    </dt>
+                                    <dd class="lyrucs-original pull-left span-2">
+                                        《中国人》
+                                    </dd>
+                                    <dt class="lyrucs-song pull-left span-2">
+                                        《冻死人》
+                                    </dt>
+                                    <dd class="lyrucs-original pull-left span-2">
+                                        《中国人》
+                                    </dd>
+                                    <dt class="lyrucs-song pull-left span-2">
+                                        《冻死人》
+                                    </dt>
+                                    <dd class="lyrucs-original pull-left span-2">
+                                        《中国人》
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>-->
+
+@section footer{
+    <script type="text/javascript">
+    </script>
+}

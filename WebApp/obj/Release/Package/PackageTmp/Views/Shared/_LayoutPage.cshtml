@@ -1,0 +1,171 @@
+﻿@{
+    Model.bds256641637_dbEntities db = new Model.bds256641637_dbEntities();
+    Model.zhancaiw_user usermodel = null;
+    if (Session["zhancaiw_usermodel"] != null)
+    {
+        usermodel = Session["zhancaiw_usermodel"] as Model.zhancaiw_user;
+    }
+    var navlist = db.zhancaiw_category.Where(c => c.categoryPID == 0).ToList();
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title - 展才网</title>
+    <meta name="description" content="展才网，是一个使你能够在互联网上展现自己才华的平台。">
+    <meta name="keywords" content="展才,展才网,人才,展现,发展">
+    <link href="~/Content/css/main.css" rel="stylesheet" />
+    <link href="~/Content/fonts/iconfont.css" rel="stylesheet" />
+    <link href="~/Content/css/index.css" rel="stylesheet" />
+    @RenderSection("header", false)
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="web-logo pull-left" style="cursor:pointer;" onclick="window.location='/home/index.html'">
+            </div>
+            <nav class="nav-list list-group pull-left left-nav-list">
+                <li><a href="/home/index.html">首页</a></li>
+                @foreach (var item in navlist)
+                {
+                      <li><a href="/home/@(item.urlParams).html">@item.categoryName</a></li>
+                }
+                @*<li><a href="/home/index.html">首页</a></li>
+                <li><a href="/home/video.html">视频</a></li>
+                <li><a href="/home/music.html">音乐</a></li>*@
+            </nav>
+            <div class="pull-right">
+                <div class="nav-seach-from pull-left">
+                    <form action="/" method="get">
+                        <input class="nav-seach-txt" type="search" value="" placeholder="您想要的翻唱歌曲" />
+                        <button type="submit" class="nav-seach-btn iconfont">&#xe6af;</button>
+                    </form>
+                </div>
+                <div class="nav-login-area pull-left right-nav-list">
+                    <ul class="list-group nav-list">
+                        @*<li><a class="iconfont" href="/account/login.html">&#xe6b2;</a></li>*@
+                        @if (usermodel != null)
+                        {
+                            <li><a href="/center/index.html">@(string.IsNullOrEmpty(usermodel.nickName) == true ? usermodel.email : usermodel.nickName)</a></li>
+                            <li><a href="/center/layout.html">退出</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="/account/login.html">登录</a></li>
+                            <li><a href="/account/register.html">注册</a></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <article>
+        @RenderBody()
+    </article>
+
+    <footer>
+        <div class="container">
+            <div class="footer-link">
+                <div class="links-title">
+                    links
+                    <strong>友情链接</strong>
+                </div>
+                <div class="links-info">
+                    @* <a href="http://www.trjcn.com/baike.html" target="_blank" title="投融百科">投融百科</a>
+                        <a href="http://www.trjcn.com/tgzt/index.html" target="_blank" title="投融界专题">投融界专题</a>
+                        <a href="http://www.dyhjw.com/" target="_blank" title="金价查询">金价查询</a>
+                        <a href="http://www.trjcn.com/baike.html" target="_blank" title="投融百科">投融百科</a>
+                        <a href="http://www.trjcn.com/tgzt/index.html" target="_blank" title="投融界专题">投融界专题</a>
+                        <a href="http://www.dyhjw.com/" target="_blank" title="金价查询">金价查询</a>
+                        <a href="http://www.trjcn.com/baike.html" target="_blank" title="投融百科">投融百科</a>
+                        <a href="http://www.trjcn.com/tgzt/index.html" target="_blank" title="投融界专题">投融界专题</a>
+                        <a href="http://www.dyhjw.com/" target="_blank" title="金价查询">金价查询</a>
+                        <a href="http://www.trjcn.com/tgzt/index.html" target="_blank" title="投融界专题">投融界专题</a>
+                        <a href="http://www.dyhjw.com/" target="_blank" title="金价查询">金价查询</a>
+                        <a href="http://www.trjcn.com/baike.html" target="_blank" title="投融百科">投融百科</a>
+                        <a href="http://www.trjcn.com/tgzt/index.html" target="_blank" title="投融界专题">投融界专题</a>
+                        <a href="http://www.dyhjw.com/" target="_blank" title="金价查询">金价查询</a>
+                        <a href="http://www.trjcn.com/tgzt/index.html" target="_blank" title="投融界专题">投融界专题</a>
+                        <a href="http://www.dyhjw.com/" target="_blank" title="金价查询">金价查询</a>
+                        <a href="http://www.trjcn.com/baike.html" target="_blank" title="投融百科">投融百科</a>
+                        <a href="http://www.trjcn.com/tgzt/index.html" target="_blank" title="投融界专题">投融界专题</a>
+                        <a href="http://www.dyhjw.com/" target="_blank" title="金价查询">金价查询</a>*@
+                </div>
+            </div>
+        </div>
+        <div class="text-center web-info">
+            <p>Copyright © 1998 - 2016 Tencent. All Rights Reserved.</p>
+
+            <p>展才网 www.zhancaiw.com</p>
+        </div>
+    </footer>
+    <aside class="fixed aside ">
+        <ul class="list-group aside-list">
+            <li class="list-group-item asige-list active text-center ">
+                <i class="iconfont ">&#xe620;</i>
+            </li>
+            <li class="list-group-item asige-list text-center ">
+                <i class="iconfont ">&#x3486;</i>
+            </li>
+        </ul>
+    </aside>
+
+    <script type="text/javascript" src="/Content/js/jquery-1.9.1.min.js"></script>
+    <script src="~/Content/js/convert_to_time.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            getLinks();
+        })
+
+        //获取友情链接数据
+        function getLinks() {
+            $.get("/Home/GetLinks", {}, function (serverData) {
+                //console.log(serverData);
+                var jsondata = $.parseJSON(serverData);
+                if (jsondata.status == 0) {
+                    var result = jsondata.data;
+                    var _html = '';
+                    for (var i = 0; i < result.length; i++) {
+                        _html += '<a href="' + result[i].linkUrl + '" target="_blank" title="' + result[i].linkName + '">' + result[i].linkName + '</a>';
+                    }
+                    $(".links-info").html(_html);
+                } else {
+                    console.log(jsondata.msg);
+                }
+            });
+        }
+
+        $(".left-nav-list li a").each(function () {
+            var url = String(window.location);
+            if (url.indexOf('.html') == -1) {
+                url += "home/index.html";
+            }
+            $this = $(this);
+            if ($this[0].href == url) {
+                $this.parent().addClass("active");
+            }
+            //console.log($this[0].href + "|" + String(window.location)+"|"+url);
+        });
+    </script>
+
+    @RenderSection("footer", false)
+
+</body>
+</html>
+<!--百度链接自动提交-->
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>

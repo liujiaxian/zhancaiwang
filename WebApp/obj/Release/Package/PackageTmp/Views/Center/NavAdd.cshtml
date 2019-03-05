@@ -1,0 +1,96 @@
+﻿@{
+    ViewBag.Title = "链接添加";
+    Layout = "~/Views/Shared/_LayoutCenter.cshtml";
+}
+
+@{
+    List<Model.zhancaiw_category> list1 = ViewData["list1"] as List<Model.zhancaiw_category>;
+    List<Model.zhancaiw_category> list2 = ViewData["list2"] as List<Model.zhancaiw_category>;
+}
+
+<div style="margin-left: 20px; margin-top: 5px;">
+    <div class="layui-elem-quote">
+        <p>导航添加  <span style="margin-left:20px;color:green;">注意：当一级导航为空时表示添加一级导航，二级也是如此!</span></p>
+    </div>
+    <br />
+    <div class="layui-form">
+        <div class="layui-form-item">
+            <label class="layui-form-label">分类</label>
+            <div class="layui-input-inline">
+                <select name="quiz1" id="txtsort">
+                    <option value="">请选择一级导航</option>
+                    @foreach (var item in list1)
+                    {
+                        <option value="@item.categoryID">@item.categoryName</option>
+                    }
+                </select>
+            </div>
+            <div class="layui-input-inline">
+                <select name="quiz2" id="txtsortone">
+                    <option value="">请选择二级导航</option>
+                    @foreach (var item in list2)
+                    {
+                        <option value="@item.categoryID">@item.categoryName</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">导航名称</label>
+            <div class="layui-input-block">
+                <input type="text" id="txtname" required lay-verify="required" placeholder="请输入导航名称" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">url参数</label>
+            <div class="layui-input-block">
+                <input type="text" id="txturl" placeholder="添加一级导航时需要输入，并联系管理员添加相应的页面" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="formDemo" onclick="btn_navadd()">立即提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section centerfooter{
+    <script type="text/javascript">
+        function btn_navadd() {
+            var sort = $("#txtsort").val();
+            var url = $("#txturl").val();
+            
+            var sortone = $("#txtsortone").val();
+
+            var name = $("#txtname").val();
+            if (name==""||name==null) {
+                layer.msg("导航名称不能为空！");
+                return;
+            }
+
+            var url = $("#txturl").val();
+
+            var pams = {
+                sort: sort,
+                sortone: sortone,
+                name: name,
+                url: url
+            };
+
+            $.post("/Center/NavAdd", pams, function (serverData) {
+                var jsondata = $.parseJSON(serverData);
+                if (jsondata.status == 0) {
+                    layer.msg(jsondata.msg);
+                    window.location = "/center/navlist.html";
+                } else {
+                    layer.msg(jsondata.msg);
+                }
+            });
+        }
+
+    </script>
+}

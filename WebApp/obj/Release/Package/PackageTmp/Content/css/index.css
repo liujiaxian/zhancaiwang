@@ -1,0 +1,114 @@
+.index-hot-area .h2 {
+  display: inline-block;
+  padding-right: 15px; }
+.index-hot-area .img-area {
+  padding-left: 0px;
+  margin-right: -20px;
+  width: 100%; }
+  .index-hot-area .img-area .list-group-item {
+    box-sizing: border-box;
+    padding-bottom: 44px;
+    width: 25%;
+    margin: 0px;
+    overflow: visible; }
+    .index-hot-area .img-area .list-group-item .mv-list {
+      visibility: visible;
+      margin-right: 20px;
+      height: 240px; }
+      .index-hot-area .img-area .list-group-item .mv-list > a {
+        position: relative;
+        list-style: none;
+        min-height: 1px;
+        overflow: hidden;
+        display: block;
+        margin-bottom: 15px; }
+        .index-hot-area .img-area .list-group-item .mv-list > a .mv-pay-icon {
+          position: absolute;
+          opacity: 0;
+          left: 50%;
+          top: 50%;
+          margin-left: -21px;
+          margin-top: -21px;
+          font-size: 42px;
+          z-index: 50;
+          color: #e8e8e8;
+          -webkit-transition: opacity 1s ease-in-out;
+          -moz-transition: opacity 1s ease-in-out;
+          -o-transition: opacity 1s ease-in-out;
+          transition: opacity 1s ease-in-out; }
+        .index-hot-area .img-area .list-group-item .mv-list > a img {
+          max-width: 100%;
+          -webkit-transform: scale(1);
+          transform: scale(1);
+          -webkit-transition: -webkit-transform 1s;
+          transition: -webkit-transform 1s;
+          transition: transform 1s;
+          transition: transform 1s, -webkit-transform 1s; }
+        .index-hot-area .img-area .list-group-item .mv-list > a:hover img {
+          -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+          -webkit-transition: -webkit-transform 1s;
+          transition: -webkit-transform 1s;
+          transition: transform 1s;
+          transition: transform 1s, -webkit-transform 1s; }
+        .index-hot-area .img-area .list-group-item .mv-list > a:hover .mv-pay-icon {
+          opacity: 1;
+          filter: alpha(opacity=1); }
+      .index-hot-area .img-area .list-group-item .mv-list .mv_list_title {
+        font-size: 14.5px;
+        padding: 0px;
+        line-height: 1.5rem; }
+      .index-hot-area .img-area .list-group-item .mv-list .mv_list_singer a {
+        font-size: 13px;
+        color: #999;
+        line-height: 1.5rem; }
+      .index-hot-area .img-area .list-group-item .mv-list .mv_list_info {
+        font-size: 13px;
+        color: #999; }
+
+.index-inline-block .dl-group {
+  width: 100%;
+  margin-bottom: 30px;
+  overflow: hidden; }
+.index-inline-block dd {
+  position: relative;
+  list-style: none;
+  min-height: 1px;
+  overflow: hidden;
+  float: left;
+  line-height: 1.5rem;
+  width: 144px; }
+
+.index-lyrics .list-group-item {
+  padding: 8px 16px;
+  border: 1px solid #7f7f7f;
+  color: #7f7f7f;
+  margin-right: 10px; }
+  .index-lyrics .list-group-item.active, .index-lyrics .list-group-item:hover {
+    border: 1px solid #31c27c;
+    color: #31c27c; }
+    .index-lyrics .list-group-item.active a, .index-lyrics .list-group-item:hover a {
+      color: #31c27c; }
+
+.lyrics .plane {
+  width: 379px;
+  background-color: #fff;
+  margin: 0px;
+  margin-right: 21px; }
+.lyrics .plane dt {
+  width: 179px; }
+.lyrics .lyrucs-original {
+  margin-left: 10px;
+  width: 160px; }
+
+.plane .plane-title {
+  height: 35px;
+  line-height: 35px;
+  overflow: hidden;
+  border-bottom: 1px #e8e8e8 solid;
+  margin: 0px 10px; }
+.plane .plane-body {
+  font-size: 13px;
+  color: #999; }
+
+/*# sourceMappingURL=index.css.map */

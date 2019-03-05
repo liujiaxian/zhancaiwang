@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a2eb894535c34c3cb53c7307b39125c1" Name="关系图1">
+        <EntityTypeShape EntityType="bds256641637_dbModel.zhancaiw_category" Width="1.5" PointX="11.275079922413024" PointY="4.3380981852943536" />
+        <EntityTypeShape EntityType="bds256641637_dbModel.zhancaiw_email" Width="1.5" PointX="1.3692426017342334" PointY="0.81868533828234546" />
+        <EntityTypeShape EntityType="bds256641637_dbModel.zhancaiw_feedback" Width="1.5" PointX="0.0023743361245721281" PointY="21.461460347036581" />
+        <EntityTypeShape EntityType="bds256641637_dbModel.zhancaiw_links" Width="1.5" PointX="11.309582048705584" PointY="15.974992044258393" />
+        <EntityTypeShape EntityType="bds256641637_dbModel.zhancaiw_look" Width="1.5" PointX="11.806854793711963" PointY="5.7533136185972547" />
+        <EntityTypeShape EntityType="bds256641637_dbModel.zhancaiw_tanmu" Width="1.5" PointX="11.304826307718095" PointY="4.2989629825106652" />
+        <EntityTypeShape EntityType="bds256641637_dbModel.zhancaiw_user" Width="1.5" PointX="6.17517608505449" PointY="28.375535650353662" />
+        <EntityTypeShape EntityType="bds256641637_dbModel.zhancaiw_video" Width="1.5" PointX="1.2586661378194886" PointY="1.66033047514983" />
+        <EntityTypeShape EntityType="bds256641637_dbModel.zhancaiw_vyw_links_user" Width="1.5" PointX="0.41024349462717935" PointY="12.297802021865641" />
+        <EntityTypeShape EntityType="bds256641637_dbModel.zhancaiw_vyw_tanmu_video_user" Width="1.5" PointX="3.9013116824912428" PointY="11.384173115428618" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

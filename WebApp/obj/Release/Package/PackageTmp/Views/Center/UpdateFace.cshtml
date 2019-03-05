@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "修改头像";
+    Layout = "~/Views/Shared/_LayoutCenter.cshtml";
+}
+
+<div style="margin-left: 20px; margin-top: 5px;">
+    <div class="layui-elem-quote">
+        <p>我的头像</p>
+
+    </div>
+    <br />
+    <div>
+        <div>
+            <img src="@ViewData["src"]" style="width: 200px; height: 200px;" id="txtimg" />&nbsp;&nbsp;<input type="file" name="file" class="layui-upload-file"></div>
+        <br />
+        <br />
+         <button class="layui-btn" onclick="btn_saveimage()">立即提交</button>
+        <input type="hidden" id="txtheadimage"/>
+    </div>
+</div>
+
+
+
+
+@section centerfooter{
+    <script type="text/javascript">
+        layui.upload({
+            url: '/Center/Upload?action=headimage'
+              , success: function (jsondata) {
+                  if (jsondata.status == 0) {
+                      layer.msg(jsondata.msg);
+                      $("#txtimg").attr("src", jsondata.data);
+                      $("#txtheadimage").val(jsondata.data);
+                  } else {
+                      layer.msg(jsondata.msg);
+                  }
+
+                  //console.log(res); //上传成功返回值，必须为json格式
+              }
+        });
+
+        function btn_saveimage() {
+            var imgurl = $("#txtheadimage").val();
+            if (imgurl==null||imgurl=="") {
+                layer.msg("请先上传图片再提交！");
+                return;
+            }
+
+            $.post("/Center/UpdateFace", {imgurl:imgurl}, function (serverData) {
+                var jsondata = $.parseJSON(serverData);
+                if (jsondata.status==0) {
+                    layer.msg(jsondata.msg);
+                    window.location.reload();
+                } else {
+                    layer.msg(jsondata.msg);
+                }
+            });
+        }
+
+    </script>
+}

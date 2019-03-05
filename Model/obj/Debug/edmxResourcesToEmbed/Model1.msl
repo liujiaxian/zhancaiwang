@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="bds256641637_dbModelStoreContainer" CdmEntityContainer="bds256641637_dbEntities">
+    <EntitySetMapping Name="zhancaiw_category">
+      <EntityTypeMapping TypeName="bds256641637_dbModel.zhancaiw_category">
+        <MappingFragment StoreEntitySet="zhancaiw_category">
+          <ScalarProperty Name="updateTime" ColumnName="updateTime" />
+          <ScalarProperty Name="addTime" ColumnName="addTime" />
+          <ScalarProperty Name="urlParams" ColumnName="urlParams" />
+          <ScalarProperty Name="categoryPID" ColumnName="categoryPID" />
+          <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+          <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="zhancaiw_email">
+      <EntityTypeMapping TypeName="bds256641637_dbModel.zhancaiw_email">
+        <MappingFragment StoreEntitySet="zhancaiw_email">
+          <ScalarProperty Name="emailUrl" ColumnName="emailUrl" />
+          <ScalarProperty Name="emailLast" ColumnName="emailLast" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="zhancaiw_feedback">
+      <EntityTypeMapping TypeName="bds256641637_dbModel.zhancaiw_feedback">
+        <MappingFragment StoreEntitySet="zhancaiw_feedback">
+          <ScalarProperty Name="addTime" ColumnName="addTime" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="qq" ColumnName="qq" />
+          <ScalarProperty Name="describe" ColumnName="describe" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="zhancaiw_links">
+      <EntityTypeMapping TypeName="bds256641637_dbModel.zhancaiw_links">
+        <MappingFragment StoreEntitySet="zhancaiw_links">
+          <ScalarProperty Name="updateTime" ColumnName="updateTime" />
+          <ScalarProperty Name="addTime" ColumnName="addTime" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+          <ScalarProperty Name="linkUrl" ColumnName="linkUrl" />
+          <ScalarProperty Name="linkName" ColumnName="linkName" />
+          <ScalarProperty Name="linkID" ColumnName="linkID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="zhancaiw_look">
+      <EntityTypeMapping TypeName="bds256641637_dbModel.zhancaiw_look">
+        <MappingFragment StoreEntitySet="zhancaiw_look">
+          <ScalarProperty Name="addTime" ColumnName="addTime" />
+          <ScalarProperty Name="videoID" ColumnName="videoID" />
+          <ScalarProperty Name="ipAddress" ColumnName="ipAddress" />
+          <ScalarProperty Name="lookID" ColumnName="lookID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="zhancaiw_tanmu">
+      <EntityTypeMapping TypeName="bds256641637_dbModel.zhancaiw_tanmu">
+        <MappingFragment StoreEntitySet="zhancaiw_tanmu">
+          <ScalarProperty Name="addTime" ColumnName="addTime" />
+          <ScalarProperty Name="time" ColumnName="time" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="color" ColumnName="color" />
+          <ScalarProperty Name="isShow" ColumnName="isShow" />
+          <ScalarProperty Name="text" ColumnName="text" />
+          <ScalarProperty Name="videoID" ColumnName="videoID" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="zhancaiw_user">
+      <EntityTypeMapping TypeName="bds256641637_dbModel.zhancaiw_user">
+        <MappingFragment StoreEntitySet="zhancaiw_user">
+          <ScalarProperty Name="updateTime" ColumnName="updateTime" />
+          <ScalarProperty Name="regTime" ColumnName="regTime" />
+          <ScalarProperty Name="activeStatus" ColumnName="activeStatus" />
+          <ScalarProperty Name="activeTime" ColumnName="activeTime" />
+          <ScalarProperty Name="activeToken" ColumnName="activeToken" />
+          <ScalarProperty Name="lastTime" ColumnName="lastTime" />
+          <ScalarProperty Name="roleID" ColumnName="roleID" />
+          <ScalarProperty Name="nickName" ColumnName="nickName" />
+          <ScalarProperty Name="introduce" ColumnName="introduce" />
+          <ScalarProperty Name="hobby" ColumnName="hobby" />
+          <ScalarProperty Name="sex" ColumnName="sex" />
+          <ScalarProperty Name="birthday" ColumnName="birthday" />
+          <ScalarProperty Name="lastIP" ColumnName="lastIP" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="aover" ColumnName="aover" />
+          <ScalarProperty Name="userPwd" ColumnName="userPwd" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="openID" ColumnName="openID" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="zhancaiw_video">
+      <EntityTypeMapping TypeName="bds256641637_dbModel.zhancaiw_video">
+        <MappingFragment StoreEntitySet="zhancaiw_video">
+          <ScalarProperty Name="releaseTime" ColumnName="releaseTime" />
+          <ScalarProperty Name="updateTime" ColumnName="updateTime" />
+          <ScalarProperty Name="addTime" ColumnName="addTime" />
+          <ScalarProperty Name="isRecommend" ColumnName="isRecommend" />
+          <ScalarProperty Name="clickCount" ColumnName="clickCount" />
+          <ScalarProperty Name="videoStatus" ColumnName="videoStatus" />
+          <ScalarProperty Name="videoDescripe" ColumnName="videoDescripe" />
+          <ScalarProperty Name="videoSourceUrl" ColumnName="videoSourceUrl" />
+          <ScalarProperty Name="videoAuthor" ColumnName="videoAuthor" />
+          <ScalarProperty Name="videoUrl" ColumnName="videoUrl" />
+          <ScalarProperty Name="videoCover" ColumnName="videoCover" />
+          <ScalarProperty Name="videoTitle" ColumnName="videoTitle" />
+          <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+          <ScalarProperty Name="sortID" ColumnName="sortID" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="videoID" ColumnName="videoID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="zhancaiw_vyw_links_user">
+      <EntityTypeMapping TypeName="bds256641637_dbModel.zhancaiw_vyw_links_user">
+        <MappingFragment StoreEntitySet="zhancaiw_vyw_links_user">
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="nickName" ColumnName="nickName" />
+          <ScalarProperty Name="roleID" ColumnName="roleID" />
+          <ScalarProperty Name="updateTime" ColumnName="updateTime" />
+          <ScalarProperty Name="addTime" ColumnName="addTime" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+          <ScalarProperty Name="linkUrl" ColumnName="linkUrl" />
+          <ScalarProperty Name="linkName" ColumnName="linkName" />
+          <ScalarProperty Name="linkID" ColumnName="linkID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="zhancaiw_vyw_tanmu_video_user">
+      <EntityTypeMapping TypeName="bds256641637_dbModel.zhancaiw_vyw_tanmu_video_user">
+        <MappingFragment StoreEntitySet="zhancaiw_vyw_tanmu_video_user">
+          <ScalarProperty Name="time" ColumnName="time" />
+          <ScalarProperty Name="roleID" ColumnName="roleID" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="nickName" ColumnName="nickName" />
+          <ScalarProperty Name="addTime" ColumnName="addTime" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="color" ColumnName="color" />
+          <ScalarProperty Name="isShow" ColumnName="isShow" />
+          <ScalarProperty Name="text" ColumnName="text" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="videoID" ColumnName="videoID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,550 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0680EBD4-972D-401E-B1F3-A7B81935706B}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebApp</RootNamespace>
+    <AssemblyName>WebApp</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Providers">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.2\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20715.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.3.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.3.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseApiController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CenterController.cs" />
+    <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PostTanMu.cs" />
+    <Compile Include="Models\TanMu.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\js\jquery.pjax.js" />
+    <Content Include="Content\js\tanmu\api.js" />
+    <Content Include="Content\js\tanmu\DPlayer.min.js" />
+    <Content Include="Content\js\tanmu\flv.min.js" />
+    <Content Include="Content\js\tanmu\hls.min.js" />
+    <Content Include="Content\js\tanmu\stats.min.js" />
+    <Content Include="Content\css\account\public.css" />
+    <Content Include="Content\css\account\register.css" />
+    <Content Include="Content\css\account\reset.css" />
+    <Content Include="Content\css\base.css" />
+    <Content Include="Content\css\index.css" />
+    <Content Include="Content\css\info.css" />
+    <Content Include="Content\css\main.css" />
+    <Content Include="Content\fonts\iconfont.css" />
+    <Content Include="Content\fonts\iconfont.js" />
+    <Content Include="Content\fonts\iconfont.svg" />
+    <Content Include="Content\images\account.png" />
+    <Content Include="Content\images\account\aaa.png" />
+    <Content Include="Content\images\account\btn.png" />
+    <Content Include="Content\images\account\check1.png" />
+    <Content Include="Content\images\account\check2.png" />
+    <Content Include="Content\images\account\csdn.png" />
+    <Content Include="Content\images\account\iphone.png" />
+    <Content Include="Content\images\account\login_banner.png" />
+    <Content Include="Content\images\account\logo.png" />
+    <Content Include="Content\images\account\logo2.png" />
+    <Content Include="Content\images\account\smile.png" />
+    <Content Include="Content\images\account\success.png" />
+    <Content Include="Content\images\account\text.png" />
+    <Content Include="Content\images\account\weixin.jpg" />
+    <Content Include="Content\images\account\weiyi_qr.png" />
+    <Content Include="Content\images\base.png" />
+    <Content Include="Content\images\elements.png" />
+    <Content Include="Content\images\logo.png" />
+    <Content Include="Content\js\account\jquery.form.js" />
+    <Content Include="Content\js\account\json.parse.js" />
+    <Content Include="Content\js\birthday.js" />
+    <Content Include="Content\js\convert_to_time.js" />
+    <Content Include="Content\js\jquery-1.9.1.min.js" />
+    <Content Include="Content\member\css\layui.css" />
+    <Content Include="Content\member\css\modules\code.css" />
+    <Content Include="Content\member\css\modules\laydate\icon.png" />
+    <Content Include="Content\member\css\modules\laydate\laydate.css" />
+    <Content Include="Content\member\css\modules\layer\default\icon-ext.png" />
+    <Content Include="Content\member\css\modules\layer\default\icon.png" />
+    <Content Include="Content\member\css\modules\layer\default\layer.css" />
+    <Content Include="Content\member\css\modules\layer\default\loading-0.gif" />
+    <Content Include="Content\member\css\modules\layer\default\loading-1.gif" />
+    <Content Include="Content\member\css\modules\layer\default\loading-2.gif" />
+    <Content Include="Content\member\font\iconfont.svg" />
+    <Content Include="Content\member\images\face\0.gif" />
+    <Content Include="Content\member\images\face\1.gif" />
+    <Content Include="Content\member\images\face\10.gif" />
+    <Content Include="Content\member\images\face\11.gif" />
+    <Content Include="Content\member\images\face\12.gif" />
+    <Content Include="Content\member\images\face\13.gif" />
+    <Content Include="Content\member\images\face\14.gif" />
+    <Content Include="Content\member\images\face\15.gif" />
+    <Content Include="Content\member\images\face\16.gif" />
+    <Content Include="Content\member\images\face\17.gif" />
+    <Content Include="Content\member\images\face\18.gif" />
+    <Content Include="Content\member\images\face\19.gif" />
+    <Content Include="Content\member\images\face\2.gif" />
+    <Content Include="Content\member\images\face\20.gif" />
+    <Content Include="Content\member\images\face\21.gif" />
+    <Content Include="Content\member\images\face\22.gif" />
+    <Content Include="Content\member\images\face\23.gif" />
+    <Content Include="Content\member\images\face\24.gif" />
+    <Content Include="Content\member\images\face\25.gif" />
+    <Content Include="Content\member\images\face\26.gif" />
+    <Content Include="Content\member\images\face\27.gif" />
+    <Content Include="Content\member\images\face\28.gif" />
+    <Content Include="Content\member\images\face\29.gif" />
+    <Content Include="Content\member\images\face\3.gif" />
+    <Content Include="Content\member\images\face\30.gif" />
+    <Content Include="Content\member\images\face\31.gif" />
+    <Content Include="Content\member\images\face\32.gif" />
+    <Content Include="Content\member\images\face\33.gif" />
+    <Content Include="Content\member\images\face\34.gif" />
+    <Content Include="Content\member\images\face\35.gif" />
+    <Content Include="Content\member\images\face\36.gif" />
+    <Content Include="Content\member\images\face\37.gif" />
+    <Content Include="Content\member\images\face\38.gif" />
+    <Content Include="Content\member\images\face\39.gif" />
+    <Content Include="Content\member\images\face\4.gif" />
+    <Content Include="Content\member\images\face\40.gif" />
+    <Content Include="Content\member\images\face\41.gif" />
+    <Content Include="Content\member\images\face\42.gif" />
+    <Content Include="Content\member\images\face\43.gif" />
+    <Content Include="Content\member\images\face\44.gif" />
+    <Content Include="Content\member\images\face\45.gif" />
+    <Content Include="Content\member\images\face\46.gif" />
+    <Content Include="Content\member\images\face\47.gif" />
+    <Content Include="Content\member\images\face\48.gif" />
+    <Content Include="Content\member\images\face\49.gif" />
+    <Content Include="Content\member\images\face\5.gif" />
+    <Content Include="Content\member\images\face\50.gif" />
+    <Content Include="Content\member\images\face\51.gif" />
+    <Content Include="Content\member\images\face\52.gif" />
+    <Content Include="Content\member\images\face\53.gif" />
+    <Content Include="Content\member\images\face\54.gif" />
+    <Content Include="Content\member\images\face\55.gif" />
+    <Content Include="Content\member\images\face\56.gif" />
+    <Content Include="Content\member\images\face\57.gif" />
+    <Content Include="Content\member\images\face\58.gif" />
+    <Content Include="Content\member\images\face\59.gif" />
+    <Content Include="Content\member\images\face\6.gif" />
+    <Content Include="Content\member\images\face\60.gif" />
+    <Content Include="Content\member\images\face\61.gif" />
+    <Content Include="Content\member\images\face\62.gif" />
+    <Content Include="Content\member\images\face\63.gif" />
+    <Content Include="Content\member\images\face\64.gif" />
+    <Content Include="Content\member\images\face\65.gif" />
+    <Content Include="Content\member\images\face\66.gif" />
+    <Content Include="Content\member\images\face\67.gif" />
+    <Content Include="Content\member\images\face\68.gif" />
+    <Content Include="Content\member\images\face\69.gif" />
+    <Content Include="Content\member\images\face\7.gif" />
+    <Content Include="Content\member\images\face\70.gif" />
+    <Content Include="Content\member\images\face\71.gif" />
+    <Content Include="Content\member\images\face\8.gif" />
+    <Content Include="Content\member\images\face\9.gif" />
+    <Content Include="Content\member\layui.js" />
+    <Content Include="Content\member\lay\dest\layui.all.js" />
+    <Content Include="Content\member\lay\lib\jquery.js" />
+    <Content Include="Content\member\lay\modules\code.js" />
+    <Content Include="Content\member\lay\modules\element.js" />
+    <Content Include="Content\member\lay\modules\flow.js" />
+    <Content Include="Content\member\lay\modules\form.js" />
+    <Content Include="Content\member\lay\modules\laydate.js" />
+    <Content Include="Content\member\lay\modules\layedit.js" />
+    <Content Include="Content\member\lay\modules\layer.js" />
+    <Content Include="Content\member\lay\modules\laypage.js" />
+    <Content Include="Content\member\lay\modules\laytpl.js" />
+    <Content Include="Content\member\lay\modules\tree.js" />
+    <Content Include="Content\member\lay\modules\upload.js" />
+    <Content Include="Content\member\lay\modules\util.js" />
+    <Content Include="Content\node_modules\es6-promise\auto.js" />
+    <Content Include="Content\node_modules\es6-promise\dist\es6-promise.auto.js" />
+    <Content Include="Content\node_modules\es6-promise\dist\es6-promise.auto.min.js" />
+    <Content Include="Content\node_modules\es6-promise\dist\es6-promise.js" />
+    <Content Include="Content\node_modules\es6-promise\dist\es6-promise.min.js" />
+    <Content Include="Content\node_modules\es6-promise\es6-promise.d.ts" />
+    <Content Include="Content\node_modules\es6-promise\lib\es6-promise.js" />
+    <Content Include="Content\node_modules\es6-promise\lib\es6-promise\-internal.js" />
+    <Content Include="Content\node_modules\es6-promise\lib\es6-promise\asap.js" />
+    <Content Include="Content\node_modules\es6-promise\lib\es6-promise\enumerator.js" />
+    <Content Include="Content\node_modules\es6-promise\lib\es6-promise\polyfill.js" />
+    <Content Include="Content\node_modules\es6-promise\lib\es6-promise\promise.js" />
+    <Content Include="Content\node_modules\es6-promise\lib\es6-promise\promise\all.js" />
+    <Content Include="Content\node_modules\es6-promise\lib\es6-promise\promise\race.js" />
+    <Content Include="Content\node_modules\es6-promise\lib\es6-promise\promise\reject.js" />
+    <Content Include="Content\node_modules\es6-promise\lib\es6-promise\promise\resolve.js" />
+    <Content Include="Content\node_modules\es6-promise\lib\es6-promise\then.js" />
+    <Content Include="Content\node_modules\es6-promise\lib\es6-promise\utils.js" />
+    <Content Include="Content\node_modules\flv.js\d.ts\flv.d.ts" />
+    <Content Include="Content\node_modules\flv.js\dist\flv.js" />
+    <Content Include="Content\node_modules\flv.js\dist\flv.min.js" />
+    <Content Include="Content\node_modules\flv.js\gulpfile.js" />
+    <Content Include="Content\node_modules\flv.js\src\config.js" />
+    <Content Include="Content\node_modules\flv.js\src\core\features.js" />
+    <Content Include="Content\node_modules\flv.js\src\core\media-info.js" />
+    <Content Include="Content\node_modules\flv.js\src\core\media-segment-info.js" />
+    <Content Include="Content\node_modules\flv.js\src\core\mse-controller.js" />
+    <Content Include="Content\node_modules\flv.js\src\core\mse-events.js" />
+    <Content Include="Content\node_modules\flv.js\src\core\transmuxer.js" />
+    <Content Include="Content\node_modules\flv.js\src\core\transmuxing-controller.js" />
+    <Content Include="Content\node_modules\flv.js\src\core\transmuxing-events.js" />
+    <Content Include="Content\node_modules\flv.js\src\core\transmuxing-worker.js" />
+    <Content Include="Content\node_modules\flv.js\src\demux\amf-parser.js" />
+    <Content Include="Content\node_modules\flv.js\src\demux\demux-errors.js" />
+    <Content Include="Content\node_modules\flv.js\src\demux\exp-golomb.js" />
+    <Content Include="Content\node_modules\flv.js\src\demux\flv-demuxer.js" />
+    <Content Include="Content\node_modules\flv.js\src\demux\sps-parser.js" />
+    <Content Include="Content\node_modules\flv.js\src\flv.js" />
+    <Content Include="Content\node_modules\flv.js\src\io\fetch-stream-loader.js" />
+    <Content Include="Content\node_modules\flv.js\src\io\io-controller.js" />
+    <Content Include="Content\node_modules\flv.js\src\io\loader.js" />
+    <Content Include="Content\node_modules\flv.js\src\io\param-seek-handler.js" />
+    <Content Include="Content\node_modules\flv.js\src\io\range-seek-handler.js" />
+    <Content Include="Content\node_modules\flv.js\src\io\speed-sampler.js" />
+    <Content Include="Content\node_modules\flv.js\src\io\websocket-loader.js" />
+    <Content Include="Content\node_modules\flv.js\src\io\xhr-moz-chunked-loader.js" />
+    <Content Include="Content\node_modules\flv.js\src\io\xhr-msstream-loader.js" />
+    <Content Include="Content\node_modules\flv.js\src\io\xhr-range-loader.js" />
+    <Content Include="Content\node_modules\flv.js\src\player\flv-player.js" />
+    <Content Include="Content\node_modules\flv.js\src\player\native-player.js" />
+    <Content Include="Content\node_modules\flv.js\src\player\player-errors.js" />
+    <Content Include="Content\node_modules\flv.js\src\player\player-events.js" />
+    <Content Include="Content\node_modules\flv.js\src\remux\aac-silent.js" />
+    <Content Include="Content\node_modules\flv.js\src\remux\mp4-generator.js" />
+    <Content Include="Content\node_modules\flv.js\src\remux\mp4-remuxer.js" />
+    <Content Include="Content\node_modules\flv.js\src\utils\browser.js" />
+    <Content Include="Content\node_modules\flv.js\src\utils\exception.js" />
+    <Content Include="Content\node_modules\flv.js\src\utils\logger.js" />
+    <Content Include="Content\node_modules\flv.js\src\utils\logging-control.js" />
+    <Content Include="Content\node_modules\flv.js\src\utils\polyfill.js" />
+    <Content Include="Content\node_modules\flv.js\src\utils\utf8-conv.js" />
+    <Content Include="Content\node_modules\webworkify\example\bare-blob-main.js" />
+    <Content Include="Content\node_modules\webworkify\example\bare-blob-worker.js" />
+    <Content Include="Content\node_modules\webworkify\example\main.js" />
+    <Content Include="Content\node_modules\webworkify\example\worker.js" />
+    <Content Include="Content\node_modules\webworkify\index.js" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\css\base.css.map" />
+    <Content Include="Content\css\index.css.map" />
+    <Content Include="Content\css\info.css.map" />
+    <Content Include="Content\css\main.css.map" />
+    <Content Include="Content\fonts\iconfont.eot" />
+    <Content Include="Content\fonts\iconfont.ttf" />
+    <Content Include="Content\fonts\iconfont.woff" />
+    <Content Include="Content\node_modules\es6-promise\CHANGELOG.md" />
+    <Content Include="Content\node_modules\es6-promise\dist\es6-promise.auto.map" />
+    <Content Include="Content\node_modules\es6-promise\dist\es6-promise.auto.min.map" />
+    <Content Include="Content\node_modules\es6-promise\dist\es6-promise.map" />
+    <Content Include="Content\node_modules\es6-promise\dist\es6-promise.min.map" />
+    <Content Include="Content\node_modules\es6-promise\LICENSE" />
+    <Content Include="Content\node_modules\es6-promise\package.json" />
+    <Content Include="Content\node_modules\es6-promise\README.md" />
+    <Content Include="Content\node_modules\flv.js\.babelrc" />
+    <Content Include="Content\node_modules\flv.js\.eslintignore" />
+    <Content Include="Content\node_modules\flv.js\.eslintrc.json" />
+    <Content Include="Content\node_modules\flv.js\.npmignore" />
+    <Content Include="Content\node_modules\flv.js\dist\flv.js.map" />
+    <Content Include="Content\node_modules\flv.js\dist\flv.min.js.map" />
+    <Content Include="Content\node_modules\flv.js\LICENSE" />
+    <Content Include="Content\node_modules\flv.js\package.json" />
+    <Content Include="Content\node_modules\flv.js\README.md" />
+    <Content Include="Content\node_modules\webworkify\LICENSE" />
+    <Content Include="Content\node_modules\webworkify\package.json" />
+    <Content Include="Content\node_modules\webworkify\readme.markdown" />
+    <Content Include="Content\scss\base.scss" />
+    <Content Include="Content\scss\index.scss" />
+    <Content Include="Content\scss\info.scss" />
+    <Content Include="Content\scss\main.scss" />
+    <Content Include="Content\member\font\iconfont.eot" />
+    <Content Include="Content\member\font\iconfont.ttf" />
+    <Content Include="Content\member\font\iconfont.woff" />
+    <Content Include="Content\js\tanmu\DPlayer.scss" />
+    <None Include="Properties\PublishProfiles\zhancaiw.pubxml" />
+    <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.8.2.js" />
+    <Content Include="Scripts\jquery-1.8.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.8.24.js" />
+    <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout-2.2.0.debug.js" />
+    <Content Include="Scripts\knockout-2.2.0.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Templates\sendemail.html" />
+    <Content Include="uploads\1\training_600.png" />
+    <Content Include="uploads\headimage\1\training_600.png" />
+    <Content Include="uploads\headimage\2\face.png" />
+    <Content Include="uploads\videocover\1\EN]`]3T%28[3FT9SVZ_26BURU.png" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Home\Detail.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Music.cshtml" />
+    <Content Include="Views\Home\HipHop.cshtml" />
+    <Content Include="Views\Shared\_LayoutPage.cshtml" />
+    <Content Include="Views\Shared\_LayoutAccount.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ForgetPwd.cshtml" />
+    <Content Include="Views\Account\ForgetPwdLoginEmail.cshtml" />
+    <Content Include="Views\Account\ForgetPwdReset.cshtml" />
+    <Content Include="Views\Shared\_LayoutCenter.cshtml" />
+    <Content Include="Views\Center\Index.cshtml" />
+    <Content Include="Views\Center\UpdateFace.cshtml" />
+    <Content Include="Views\Center\UpdatePwd.cshtml" />
+    <Content Include="Views\Center\VideoList.cshtml" />
+    <Content Include="Views\Center\VideoAdd.cshtml" />
+    <Content Include="Views\Center\VideoEdit.cshtml" />
+    <Content Include="Views\Home\FAQs.cshtml" />
+    <Content Include="Views\Center\FeedBack.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Center\LinkList.cshtml" />
+    <Content Include="Views\Center\LinkAdd.cshtml" />
+    <Content Include="Views\Center\LinkEdit.cshtml" />
+    <Content Include="Views\Home\Painting.cshtml" />
+    <Content Include="Views\Home\Test.cshtml" />
+    <Content Include="Views\Center\NavAdd.cshtml" />
+    <Content Include="Views\Center\NavEdit.cshtml" />
+    <Content Include="Views\Center\NavList.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{6987423d-7875-44a1-8053-675c3a8abc2d}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utility\Utility.csproj">
+      <Project>{e748672e-9329-42b1-97cf-9d269a0ecdb6}</Project>
+      <Name>Utility</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:2946/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

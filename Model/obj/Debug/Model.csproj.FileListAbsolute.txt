@@ -1,0 +1,16 @@
+E:\mycase\zhancaiw\zhancaiw\Model\bin\Debug\Model.dll.config
+E:\mycase\zhancaiw\zhancaiw\Model\bin\Debug\Model.dll
+E:\mycase\zhancaiw\zhancaiw\Model\bin\Debug\Model.pdb
+E:\mycase\zhancaiw\zhancaiw\Model\bin\Debug\EntityFramework.dll
+E:\mycase\zhancaiw\zhancaiw\Model\bin\Debug\EntityFramework.xml
+E:\mycase\zhancaiw\zhancaiw\Model\bin\Debug\zh-Hans\EntityFramework.resources.dll
+E:\mycase\zhancaiw\zhancaiw\Model\obj\Debug\Model.dll
+E:\mycase\zhancaiw\zhancaiw\Model\obj\Debug\Model.pdb
+D:\mycase\zhancaiw\zcw\Model\bin\Debug\Model.dll.config
+D:\mycase\zhancaiw\zcw\Model\bin\Debug\Model.dll
+D:\mycase\zhancaiw\zcw\Model\bin\Debug\Model.pdb
+D:\mycase\zhancaiw\zcw\Model\bin\Debug\EntityFramework.dll
+D:\mycase\zhancaiw\zcw\Model\bin\Debug\EntityFramework.xml
+D:\mycase\zhancaiw\zcw\Model\bin\Debug\zh-Hans\EntityFramework.resources.dll
+D:\mycase\zhancaiw\zcw\Model\obj\Debug\Model.dll
+D:\mycase\zhancaiw\zcw\Model\obj\Debug\Model.pdb

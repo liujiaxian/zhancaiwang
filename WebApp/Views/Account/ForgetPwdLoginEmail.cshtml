@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "登录邮箱";
+    Layout = "~/Views/Shared/_LayoutAccount.cshtml";
+}
+
+@section accountheader{
+    <style type="text/css">
+        h4 {
+            margin-bottom:10px !important;
+        }
+    </style>
+}
+
+
+<h2>忘记密码 - 登录邮箱</h2>
+<div class="div_user">
+    <span></span>
+    <input name="username" class="username" type="text" placeholder="邮箱" disabled="disabled" value="@Request["email"]">
+</div>
+<div class="div_pw">
+    <p style="color:red;padding:3px;">请您在30分钟内登录您的邮箱点击找回密码链接，否则该连接将失效。@ViewData["test"]</p>
+    
+</div>
+<div>
+    <input class="login_btn" id="loginBtn" type="button" value="登录邮箱" onclick="btn_loginemail()">
+</div>
+<div style="line-height: 30px; text-indent: 5px; color: rgb(255, 51, 0);" id="loginTips"></div>
+
+@section accountfooter{
+    <script type="text/javascript">
+        function btn_loginemail() {
+            $.post("/Account/ForgetPwdLoginEmail", { email: '@Request["email"]', token: '@Request["token"]' }, function (serverData) {
+                $("#loginBtn").val('登录中...').attr("disabled", "disabled");
+                var jsondata = $.parseJSON(serverData);
+
+                if (jsondata.status == 0) {
+                    $("#loginTips").html(jsondata.msg+"，如果未能登录可能被浏览器拦截。").fadeIn();
+                    window.open("http://" + jsondata.data);
+                    $("#loginBtn").val('登录邮箱').removeAttr('disabled');
+                } else {
+                    $("#loginTips").html(jsondata.msg).fadeIn();
+                    $("#loginBtn").val('登录邮箱').removeAttr('disabled');
+                    return false;
+                }
+            });
+        }
+    </script>
+}
+

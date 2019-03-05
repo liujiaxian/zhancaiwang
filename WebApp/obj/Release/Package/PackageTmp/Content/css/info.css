@@ -1,0 +1,34 @@
+/* line 2, ../scss/info.scss */
+.pay_area {
+  background-color: #000;
+  padding: 30px 0px 15px 0px;
+  overflow: hidden; }
+  /* line 6, ../scss/info.scss */
+  .pay_area video {
+    width: 100%;
+    max-height: 480px; }
+  /* line 11, ../scss/info.scss */
+  .pay_area .pay_area_info h1 {
+    position: relative;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    float: left;
+    margin-top: 25px;
+    color: #FFF;
+    padding-left: 172px;
+    font-size: 22px;
+    max-width: 360px; }
+  /* line 23, ../scss/info.scss */
+  .pay_area .pay_area_info small {
+    float: left;
+    margin-left: 20px;
+    font-size: 15px;
+    padding-top: 29px;
+    color: #FFF; }
+
+/* line 33, ../scss/info.scss */
+.pay_info {
+  margin-top: 30px; }
+
+/*# sourceMappingURL=info.css.map */

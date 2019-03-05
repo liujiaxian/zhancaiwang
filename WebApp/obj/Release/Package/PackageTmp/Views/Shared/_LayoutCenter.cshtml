@@ -1,0 +1,84 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+@{
+    Model.zhancaiw_user usermodel = null;
+    if (Session["zhancaiw_usermodel"] != null)
+    {
+        usermodel = Session["zhancaiw_usermodel"] as Model.zhancaiw_user;
+    }
+}
+@section header{
+    <link href="~/Content/member/css/layui.css" rel="stylesheet" />
+
+    @RenderSection("centerheader", false)
+}
+<div class="container">
+    <div style="float: left; margin-top: 20px;">
+        <ul class="layui-nav layui-nav-tree" lay-filter="test">
+            <!-- 侧边导航: <ul class="layui-nav layui-nav-tree layui-nav-side"> -->
+            <li class="layui-nav-item layui-nav-itemed">
+                <a href="javascript:;">会员信息<span class="layui-nav-more"></span></a>
+                <dl class="layui-nav-child">
+                    <dd><a href="/center/index.html">我的资料</a></dd>
+                    <dd><a href="/center/updateface.html">我的头像</a></dd>
+                    <dd><a href="/center/updatepwd.html">修改密码</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item layui-nav-itemed">
+                <a href="javascript:;">视频管理<span class="layui-nav-more"></span></a>
+                <dl class="layui-nav-child">
+                    <dd><a href="/center/videolist.html">视频列表</a></dd>
+                    <dd><a href="/center/videoadd.html">添加视频</a></dd>
+                </dl>
+            </li>
+            @if (usermodel != null&&usermodel.roleID==(int)Utility.Enum_UserRole.管理员)
+            {
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a href="javascript:;">导航管理<span class="layui-nav-more"></span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="/center/navlist.html">导航列表</a></dd>
+                        <dd><a href="/center/navadd.html">添加导航</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a href="javascript:;">友情链接<span class="layui-nav-more"></span></a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="/center/linklist.html">链接列表</a></dd>
+                        <dd><a href="/center/linkadd.html">添加链接</a></dd>
+                    </dl>
+                </li>
+            }
+            <li class="layui-nav-item layui-nav-itemed">
+                <a href="javascript:;">关于我们<span class="layui-nav-more"></span></a>
+                <dl class="layui-nav-child">
+                    <dd><a href="/home/contact.html">联系我们</a></dd>
+                    <dd><a href="/center/feedback.html">建议意见</a></dd>
+                    <dd><a href="/home/faqs.html">FAQs</a></dd>
+                </dl>
+            </li>
+
+            @*            <li class="layui-nav-item"><a href="">产品</a></li>
+            <li class="layui-nav-item"><a href="">大数据</a></li>*@
+        </ul>
+    </div>
+    <div style="float: left; width: 80%; margin-top: 20px;">
+        @RenderBody()
+    </div>
+</div>
+
+
+@section footer{
+    <script src="~/Content/member/lay/dest/layui.all.js"></script>
+    <script type="text/javascript">
+        $(".layui-nav .layui-nav-child a").each(function () {
+            $this = $(this);
+            if ($this[0].href == String(window.location)) {
+                $this.parent().addClass("layui-this");
+            }
+            // console.log($this[0].href + "|" + String(window.location));
+        });
+    </script>
+    @RenderSection("centerfooter", false)
+}

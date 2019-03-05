@@ -1,0 +1,90 @@
+﻿@{
+    ViewBag.Title = "登录";
+    Layout = "~/Views/Shared/_LayoutAccount.cshtml";
+}
+
+@section accountheader{
+
+}
+
+
+<h2>登录展才网</h2>
+<div class="div_user">
+    <span></span>
+    <input name="username" class="username" type="text" placeholder="用户名/邮箱">
+</div>
+<div class="div_pw">
+    <span></span>
+    <input class="pw" name="userpass" type="password" placeholder="密码">
+</div>
+<div class="div_pw">
+    <span></span>
+    <input class="vcode" name="vcode" type="text" placeholder="验证码" style="width: 150px;" maxlength="4"><img src="/Account/GetVcode?codelength=4&codesize=20" style="padding: 2px 1px 2px 1px; border: 1px solid #009fe3; margin-bottom: 10px; border-radius: 4px; width: 100px; margin-right: 7px; height: 36px;" class="pull-right" onclick="this.src='/Account/GetVcode?codelength=4&codesize=20&id='+Math.random()" title="看不清吗？点击切换。" />
+</div>
+<div class="div_box">
+    <label>
+        <input type="checkbox" class="check">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;下次自动登录</label>
+    <a class="forgetPw" href="/account/forgetpwd.html">忘记密码？</a>
+</div>
+<div>
+    <input class="login_btn" id="loginBtn" type="button" value="登录">
+</div>
+<div style="line-height: 30px; text-indent: 5px; color: rgb(255, 51, 0);" id="loginTips"></div>
+<h4>还没有展才网账号?<a class="#" href="/account/register.html">立即注册</a></h4>
+
+@section accountfooter{
+    <script type="text/javascript">
+        var refer = '';
+        $(document).ready(function () {
+            $("#loginBtn").click(function () {
+                $("#loginBtn").val('登录中...').attr("disabled", "disabled");
+                var username = $(".username").val();
+                var userpass = $(".pw").val();
+                var vcode = $(".vcode").val();
+                var check = $(".check").prop("checked");
+                username = $.trim(username);
+                userpass = $.trim(userpass);
+                vcode = $.trim(vcode);
+
+                $("#loginTips").css({ display: "none" });
+
+                if (username.length < 5) {
+                    //$("#username_tips").html("请输入正确的用户名!").css({display:"block"});
+                    $("#loginTips").html("请输入正确的账号!").fadeIn();
+                    $("#loginBtn").val('登录').removeAttr('disabled');
+                    return false;
+                }
+                if (userpass == '') {
+                    $("#loginTips").html("请输入正确的密码!").fadeIn();
+                    $("#loginBtn").val('登录').removeAttr('disabled');
+                    return false;
+                }
+                if (vcode == '') {
+                    $("#loginTips").html("请输入正确的验证码!").fadeIn();
+                    $("#loginBtn").val('登录').removeAttr('disabled');
+                    return false;
+                }
+                var redirect = '@Request["redirect"]';
+                $("#login_form").ajaxSubmit(function (e) {
+                    $.post("/Account/PostLogin", { email: username, password: userpass, vcode: vcode, check: check }, function (serverData) {
+                        //console.log(serverData);
+                        var jsondata = $.parseJSON(serverData);
+                        if (jsondata.status == 0) {
+                            $("#loginTips").html(jsondata.msg).fadeIn();
+                            if (redirect!=""&&redirect!=null) {
+                                window.location = decodeURIComponent(redirect);
+                            } else {
+                                window.location = "/center/index.html";
+                            }
+                        } else {
+                            $("#loginTips").html(jsondata.msg).fadeIn();
+                            $("#loginBtn").val('登录').removeAttr('disabled');
+                            return false;
+                        }
+                    });
+                })
+
+            })
+        })
+    </script>
+}

@@ -1,0 +1,91 @@
+﻿@{
+    ViewBag.Title = "建议意见";
+    Layout = "~/Views/Shared/_LayoutCenter.cshtml";
+}
+
+<div style="margin-left: 20px; margin-top: 5px;">
+    <div class="layui-elem-quote">
+        <p>建议意见</p>
+    </div>
+    <br />
+    <div class="layui-form">
+        <div class="layui-form-item">
+            <label class="layui-form-label">标题</label>
+            <div class="layui-input-block">
+                <input type="text" id="txttitle" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">QQ</label>
+            <div class="layui-input-block">
+                <input type="text" id="txtqq" placeholder="请输入QQ方便我们联系您" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">描述</label>
+            <div class="layui-input-block">
+                <textarea id="txtdesc" placeholder="请输入描述" class="layui-textarea" required lay-verify="required"></textarea>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="formDemo" onclick="btn_feedbackadd()">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary" onclick="btn_reset()">重置</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section centerfooter{
+    <script type="text/javascript">
+        function btn_feedbackadd() {
+            var title = $("#txttitle").val();
+            var qq = $("#txtqq").val();
+            if (qq!=null&&qq!="") {
+                if (!CheckQQ(qq)) {
+                    layer.msg("请输入正确的QQ号！");
+                    return;
+                }
+            }
+            var desc = $("#txtdesc").val();
+
+            var pams = {
+                title: title,
+                qq: qq,
+                desc: desc
+            };
+
+            $.post("/Center/FeedBack", pams, function (serverData) {
+                var jsondata = $.parseJSON(serverData);
+                if (jsondata.status == 0) {
+                    layer.msg(jsondata.msg);
+                    btn_reset();
+                } else {
+                    layer.msg(jsondata.msg);
+                }
+            });
+        }
+
+        //重置
+        function btn_reset() {
+            $("#txttitle").val('');
+            $("#txtqq").val('');
+            $("#txtdesc").val('');
+        }
+
+        function CheckQQ(qq) {
+            //^表示不匹配。d表示任意数字，{5,10}表示长度为5到10。   
+            var reg = /^\d{5,10}$/;
+
+            //用上面定义的正则表达式测试，如果不匹配则返回false   
+            if (!reg.test(qq)) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+    </script>
+}

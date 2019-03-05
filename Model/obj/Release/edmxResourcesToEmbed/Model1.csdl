@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="bds256641637_dbModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="bds256641637_dbEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="zhancaiw_category" EntityType="bds256641637_dbModel.zhancaiw_category" />
+    <EntitySet Name="zhancaiw_email" EntityType="bds256641637_dbModel.zhancaiw_email" />
+    <EntitySet Name="zhancaiw_feedback" EntityType="bds256641637_dbModel.zhancaiw_feedback" />
+    <EntitySet Name="zhancaiw_links" EntityType="bds256641637_dbModel.zhancaiw_links" />
+    <EntitySet Name="zhancaiw_look" EntityType="bds256641637_dbModel.zhancaiw_look" />
+    <EntitySet Name="zhancaiw_tanmu" EntityType="bds256641637_dbModel.zhancaiw_tanmu" />
+    <EntitySet Name="zhancaiw_user" EntityType="bds256641637_dbModel.zhancaiw_user" />
+    <EntitySet Name="zhancaiw_video" EntityType="bds256641637_dbModel.zhancaiw_video" />
+    <EntitySet Name="zhancaiw_vyw_links_user" EntityType="bds256641637_dbModel.zhancaiw_vyw_links_user" />
+    <EntitySet Name="zhancaiw_vyw_tanmu_video_user" EntityType="bds256641637_dbModel.zhancaiw_vyw_tanmu_video_user" />
+  </EntityContainer>
+  <EntityType Name="zhancaiw_category">
+    <Key>
+      <PropertyRef Name="categoryID" />
+    </Key>
+    <Property Type="Int32" Name="categoryID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="categoryName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="categoryPID" Nullable="false" />
+    <Property Type="String" Name="urlParams" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="addTime" Precision="3" />
+    <Property Type="DateTime" Name="updateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="zhancaiw_email">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="emailLast" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="emailUrl" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="zhancaiw_feedback">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="title" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="describe" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="qq" Nullable="false" />
+    <Property Type="Int32" Name="userID" Nullable="false" />
+    <Property Type="DateTime" Name="addTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="zhancaiw_links">
+    <Key>
+      <PropertyRef Name="linkID" />
+    </Key>
+    <Property Type="Int32" Name="linkID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="linkName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="linkUrl" Nullable="false" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="isDelete" />
+    <Property Type="Int32" Name="userID" />
+    <Property Type="DateTime" Name="addTime" Precision="3" />
+    <Property Type="DateTime" Name="updateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="zhancaiw_look">
+    <Key>
+      <PropertyRef Name="lookID" />
+    </Key>
+    <Property Type="Int32" Name="lookID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="ipAddress" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="videoID" Nullable="false" />
+    <Property Type="DateTime" Name="addTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="zhancaiw_tanmu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="userID" Nullable="false" />
+    <Property Type="Int32" Name="videoID" />
+    <Property Type="String" Name="text" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="isShow" />
+    <Property Type="String" Name="color" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="type" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Double" Name="time" />
+    <Property Type="DateTime" Name="addTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="zhancaiw_user">
+    <Key>
+      <PropertyRef Name="userID" />
+    </Key>
+    <Property Type="Int32" Name="userID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="openID" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="userName" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="userPwd" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="aover" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="email" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="lastIP" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="birthday" Precision="3" />
+    <Property Type="Int32" Name="sex" />
+    <Property Type="String" Name="hobby" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="introduce" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="nickName" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="roleID" />
+    <Property Type="DateTime" Name="lastTime" Precision="3" />
+    <Property Type="String" Name="activeToken" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="activeTime" Precision="3" />
+    <Property Type="Int32" Name="activeStatus" />
+    <Property Type="DateTime" Name="regTime" Precision="3" />
+    <Property Type="DateTime" Name="updateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="zhancaiw_video">
+    <Key>
+      <PropertyRef Name="videoID" />
+    </Key>
+    <Property Type="Int32" Name="videoID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="userID" Nullable="false" />
+    <Property Type="Int32" Name="sortID" Nullable="false" />
+    <Property Type="String" Name="categoryID" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="videoTitle" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="videoCover" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="videoUrl" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="videoAuthor" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="videoSourceUrl" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="videoDescripe" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="videoStatus" />
+    <Property Type="Int32" Name="clickCount" />
+    <Property Type="Boolean" Name="isRecommend" />
+    <Property Type="DateTime" Name="addTime" Precision="3" />
+    <Property Type="DateTime" Name="updateTime" Precision="3" />
+    <Property Type="DateTime" Name="releaseTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="zhancaiw_vyw_links_user">
+    <Key>
+      <PropertyRef Name="linkID" />
+      <PropertyRef Name="linkName" />
+      <PropertyRef Name="linkUrl" />
+      <PropertyRef Name="email" />
+    </Key>
+    <Property Type="Int32" Name="linkID" Nullable="false" />
+    <Property Type="String" Name="linkName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="linkUrl" Nullable="false" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="isDelete" />
+    <Property Type="Int32" Name="userID" />
+    <Property Type="DateTime" Name="addTime" Precision="3" />
+    <Property Type="DateTime" Name="updateTime" Precision="3" />
+    <Property Type="Int32" Name="roleID" />
+    <Property Type="String" Name="nickName" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="userName" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="email" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="zhancaiw_vyw_tanmu_video_user">
+    <Key>
+      <PropertyRef Name="userID" />
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="text" />
+      <PropertyRef Name="email" />
+    </Key>
+    <Property Type="Int32" Name="videoID" />
+    <Property Type="Int32" Name="userID" Nullable="false" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="text" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="isShow" />
+    <Property Type="String" Name="color" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="type" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="addTime" Precision="3" />
+    <Property Type="String" Name="nickName" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="email" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="roleID" />
+    <Property Type="Double" Name="time" />
+  </EntityType>
+</Schema>

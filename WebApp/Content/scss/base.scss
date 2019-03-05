@@ -1,0 +1,33 @@
+$fontSize: 12px;
+$tCenter: center;
+$tLeft:left;
+$tright:right;
+$colorMain: #31c27c;
+$colorSide: #333;
+$colorTransition: #7f7f7f;
+$colorAuxiliary: #ccc;
+@mixin listGroup {
+    position: relative;
+    list-style: none;
+    min-height: 1px;
+    overflow: hidden;
+}
+
+@mixin margin($margin) {
+    margin: $margin;
+}
+
+@mixin padding {
+    padding: $padding;
+}
+
+@mixin pull($float: left, $margin: 0px, $padding :0px) {
+    @include listGroup;
+    float: $float;
+    @if $margin !=0px {
+        @include margin($margin);
+    }
+    @if $padding !=0px {
+        @include padding($padding);
+    }
+}

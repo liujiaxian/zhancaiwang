@@ -1,0 +1,69 @@
+﻿@{
+    ViewBag.Title = "修改密码";
+    Layout = "~/Views/Shared/_LayoutCenter.cshtml";
+}
+<div style="margin-left: 20px; margin-top: 5px;">
+    <div class="layui-elem-quote">
+        <p>修改密码</p>
+    </div>
+
+    <br />
+    <div class="layui-form">
+        <div class="layui-form-item">
+            <label class="layui-form-label">登录密码</label>
+            <div class="layui-input-inline">
+                <input type="password" id="txtoldpwd" required lay-verify="required" placeholder="请输入登录密码" autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux">网站的登录密码&nbsp;&nbsp;<a href="/account/forgetpwd.html">忘记密码？</a></div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">新的密码</label>
+            <div class="layui-input-inline">
+                <input type="password" id="txtnewpwd" required lay-verify="required" placeholder="请输入新的密码" autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux">密码字符不能小于6个</div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">确认密码</label>
+            <div class="layui-input-inline">
+                <input type="password" id="txtnewrepwd" required lay-verify="required" placeholder="请输入确认密码" autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux">保证与新的密码一致</div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" onclick="btn_savepwd()" lay-submit>立即提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    function btn_savepwd() {
+        var oldpwd = $("#txtoldpwd").val();
+        var newpwd = $("#txtnewpwd").val();
+        if (newpwd.trim().length < 6) {
+            layer.msg("密码字符不能小于6位！");
+            return;
+        }
+        var newrepwd = $("#txtnewrepwd").val();
+        if (newrepwd != newpwd) {
+            layer.msg("确认密码与密码不一致！");
+            return;
+        }
+
+        $.post("/Center/UpdatePwd", { oldpwd: oldpwd,newpwd:newpwd }, function (serverData) {
+            var jsondata = $.parseJSON(serverData);
+            if (jsondata.status == 0) {
+                layer.msg(jsondata.msg);
+                //window.location.reload();
+            } else {
+                layer.msg(jsondata.msg);
+            }
+        });
+    }
+
+</script>
+

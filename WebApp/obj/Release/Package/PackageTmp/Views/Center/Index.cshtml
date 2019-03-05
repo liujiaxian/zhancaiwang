@@ -1,0 +1,165 @@
+﻿@{
+    ViewBag.Title = "会员中心";
+    Layout = "~/Views/Shared/_LayoutCenter.cshtml";
+}
+
+@{Model.zhancaiw_user usermodel = ViewData["usermodel"] as Model.zhancaiw_user;}
+
+@section centerheader{
+
+}
+
+<div class="layui-form">
+    <div class="layui-form-item">
+        <label class="layui-form-label">邮箱</label>
+        <div class="layui-input-block">
+            <input type="text" autocomplete="off" class="layui-input" disabled="disabled" value="@usermodel.email">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">用户名</label>
+        <div class="layui-input-block">
+            <input type="text" id="txtusername" required lay-verify="required" placeholder="请输入一个大于6个字符的登录用户名" autocomplete="off" class="layui-input" value="@usermodel.userName">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">昵称</label>
+        <div class="layui-input-block">
+            <input type="text" id="txtnickname" required lay-verify="required" placeholder="请输入一个有个性的名称吧" autocomplete="off" class="layui-input" value="@usermodel.nickName">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">生日</label>
+        <div class="layui-input-block">
+            <input class="layui-input" required lay-verify="required" placeholder="请输入生日" id="txtbirthday" onclick="layui.laydate({ elem: this, istime: true, festival: true, format: 'YYYY-MM-DD' })" value="@Convert.ToDateTime(usermodel.birthday).ToString("yyyy-MM-dd")">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">性别</label>
+        <div class="layui-input-block">
+            @foreach (int item in Enum.GetValues(typeof(Utility.Enum_UserSex)))
+            {
+                if (item == (int)usermodel.sex)
+                {
+                <input type="radio" name="sex" value="@item" title="@Enum.GetName(typeof(Utility.Enum_UserSex), item)" checked>
+                }
+                else
+                {
+                <input type="radio" name="sex" value="@item" title="@Enum.GetName(typeof(Utility.Enum_UserSex), item)" >
+                }
+            }
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">爱好</label>
+        <div class="layui-input-block">
+            @foreach (int item in Enum.GetValues(typeof(Utility.Enum_UserHobby)))
+            {
+                if (!string.IsNullOrEmpty(usermodel.hobby))
+                {
+                    if (usermodel.hobby.IndexOf(item.ToString()) == -1)//没有找到
+                    {
+                <input type="checkbox" value="@item" title="@Enum.GetName(typeof(Utility.Enum_UserHobby), item)">    
+                    }
+                    else
+                    {
+                <input type="checkbox" value="@item" title="@Enum.GetName(typeof(Utility.Enum_UserHobby), item)" checked="checked">
+                    }
+                }
+                else
+                { 
+                <input type="checkbox" value="@item" title="@Enum.GetName(typeof(Utility.Enum_UserHobby), item)">                    
+                }
+            }
+        </div>
+    </div>
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">个人描述</label>
+        <div class="layui-input-block">
+            <textarea id="txtdesc" placeholder="请输入个人描述,字符不能超过100个" class="layui-textarea">@usermodel.introduce</textarea>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">加入时间</label>
+        <div class="layui-input-block">
+            <input type="text" autocomplete="off" class="layui-input" disabled="disabled" value="@Convert.ToDateTime(usermodel.regTime).ToString("yyyy-MM-dd HH:mm:ss")">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">上次登录</label>
+        <div class="layui-input-block">
+            <input type="text" autocomplete="off" class="layui-input" disabled="disabled" value="@Convert.ToDateTime(usermodel.lastTime).ToString("yyyy-MM-dd HH:mm:ss")">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+        </div>
+    </div>
+</div>
+
+@section centerfooter{
+    <script type="text/javascript" src="/Content/js/birthday.js"></script>
+    <script>
+        $(function () {
+            $.ms_DatePicker({
+                YearSelector: ".sel_year",
+                MonthSelector: ".sel_month",
+                DaySelector: ".sel_day"
+            });
+            $.ms_DatePicker();
+        });
+    </script>
+
+    <script type="text/javascript">
+        //Demo
+        layui.use('form', function () {
+            var form = layui.form();
+
+            //监听提交
+            form.on('submit(formDemo)', function (data) {
+                var username = $("#txtusername").val();
+                var nickname = $("#txtnickname").val();
+                var birthday = $("#txtbirthday").val();
+                var sex = $("input[name=sex]:checked").val();
+                var hobby = '';
+                $("input[type=checkbox]:checked").each(function () {
+                    hobby += $(this).val() + ',';
+                });
+                var desc = $("#txtdesc").val();
+                if (desc.trim().length > 100) {
+                    layer.msg("个人描述字符不能超过100个");
+                    return false;
+                }
+                //console.log(hobby);
+
+                //layer.msg(JSON.stringify(data.field));
+                //return false;
+
+                var pams = {
+                    username: username,
+                    nickname: nickname,
+                    birthday: birthday,
+                    sex: sex,
+                    hobby: hobby,
+                    desc: desc
+                };
+
+                $.post("/Center/Index", pams, function (serverData) {
+                    var jsondata = $.parseJSON(serverData);
+                    if (jsondata.status == 0) {
+                        layer.msg(jsondata.msg);
+                        window.location.reload();
+                    } else {
+                        layer.msg(jsondata.msg);
+                    }
+                });
+            });
+        });
+
+
+    </script>
+
+    
+}

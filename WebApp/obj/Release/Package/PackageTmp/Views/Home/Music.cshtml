@@ -1,0 +1,136 @@
+﻿@{
+    ViewBag.Title = "音乐";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+
+@section header{
+    <style type="text/css">
+        dl dt, dl dd {
+            position: relative;
+            display: inline-block;
+            padding: 6px 12px;
+        }
+
+            dl dd.active {
+                background-color: #31c27c;
+            }
+
+                dl dd.active a {
+                    color: #FFF;
+                }
+    </style>
+}
+
+<div class="container">
+    <div class="index-hot-area pull-left">
+
+        <div class="container">
+            @{List<List<Model.zhancaiw_category>> plist = ViewData["plist"] as List<List<Model.zhancaiw_category>>;}
+            @if (plist != null)
+            {
+                foreach (List<Model.zhancaiw_category> item in plist)
+                {
+                <dl>
+
+                    @foreach (var item1 in item)
+                    {
+                        if (item1.categoryPID == 2)
+                        {
+                        <dt>@item1.categoryName</dt>
+                        <dd class="active"><a href="javascript:void(0)" data-val="0">全部</a></dd>    
+                        }
+                        else
+                        {
+                        <dd><a href="javascript:void(0)" data-val="@item1.categoryID">@item1.categoryName</a></dd>
+                        }
+                    }
+                </dl>
+                }
+            }
+@*<dl>
+                    <dt>语种</dt>
+                    <dd class="active"><a href="">中文</a></dd>
+                    <dd><a href="">英文</a></dd>
+                    <dd><a href="">日语</a></dd>
+                    <dd><a href="">韩语</a></dd>
+                </dl>
+
+                <dl>
+                    <dt>风格</dt>
+                    <dd><a href="">摇滚</a></dd>
+                    <dd><a href="">和风</a></dd>
+                    <dd><a href="">安静</a></dd>
+                    <dd><a href="">搞笑</a></dd>
+                </dl>*@
+
+        </div>
+
+        <div>
+            @ViewData["plist1"]
+        </div>
+
+        <div class="index-hot-area-cont">
+            <div class="index-inline-block">
+                <ul class="list-group img-area hotvideo">
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section footer{
+    <script src="~/Content/js/jquery.pjax.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("dl").each(function () {
+                $(this).find("dd a").click(function () {
+                    $(this).parent().siblings().removeClass("active");
+                    $(this).parent().addClass("active");
+
+                    pjax($(this).attr("data-val"));
+                });
+            });
+
+            var url = window.location.href;
+            var arr;
+            if (url.indexOf('=') != -1) {
+                var str = url.split('=');
+                if (str.length > 0) {
+                    arr = str[1].split('/');
+                }
+
+                $("dl dd a").each(function () {
+                    if (arr.indexOf($(this).attr("data-val")) != -1) {
+                        $(this).parent().addClass("active");
+                    } if ($(this).attr("data-val") == "0") {
+                        $(this).parent().removeClass("active");
+                    }
+                });
+            }
+
+            pjax($(this).attr("data-val"));
+        })
+
+        function geturlparams() {
+            var urlparams = "";
+            $("dl dd").each(function () {
+                if ($(this).attr("class") == "active") {
+                    var id = $(this).find("a").attr("data-val");
+                    urlparams += id + "/";
+                }
+            });
+            return urlparams;
+        }
+
+        function pjax(id) {
+            $.pjax({
+                type: "post",
+                url: '/home/music.html?sort=' + geturlparams(id),
+                container: ".hotvideo"
+            });
+        }
+    </script>
+}

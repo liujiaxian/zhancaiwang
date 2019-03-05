@@ -1,0 +1,75 @@
+﻿@{
+    ViewBag.Title = "详细";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+@{Model.zhancaiw_video videomodel = ViewData["videomodel"] as Model.zhancaiw_video;}
+
+@section header{
+    <link href="~/Content/css/info.css" rel="stylesheet" />
+}
+
+<div class="container">
+    <div class="index-hot-area">
+        <h2 class="h2 border-right-success">@videomodel.videoTitle - @videomodel.videoAuthor</h2>
+    </div>
+
+    <div class="pay_area">
+        @* <video controls autoplay name="media">
+            <source src="@Server.UrlDecode(videomodel.videoUrl)"
+                type="video/mp4" id="txtvideosource"></source>
+        </video>*@
+        <div class="dplayer" id="dplayer1"></div>
+
+        <div class="pay_area_info">
+            <h1></h1>
+            <small>播放量：<span>@videomodel.clickCount</span></small>
+        </div>
+    </div>
+    <div class="pay_info">
+        <h2 class="">发布时间</h2>
+        <div class="info">
+            @Convert.ToDateTime(videomodel.addTime).ToString("yyyy-MM-dd HH:mm:ss")
+        </div>
+        @if (!string.IsNullOrEmpty(videomodel.videoSourceUrl))
+        {
+            <h2 class="">版权地址</h2>
+            <div class="info">
+                @Server.UrlDecode(videomodel.videoSourceUrl)
+            </div>
+        }
+
+        <h2 class="">视频介绍</h2>
+        <div class="info">
+            @videomodel.videoDescripe
+        </div>
+    </div>
+</div>
+
+
+@section footer{
+    <script src="/Content/js/tanmu/DPlayer.min.js"></script>
+    <script type="text/javascript">
+        // Normal
+        var dp1 = new DPlayer({
+            element: document.getElementById('dplayer1'),
+            autoplay: false,
+            theme: '#FADFA3',
+            loop: true,
+            screenshot: true,
+            hotkey: true,
+            video: {
+                url: '@Server.UrlDecode(videomodel.videoUrl)',
+                pic: '@videomodel.videoCover'
+            },
+            danmaku: {
+                id: '@videomodel.videoID',
+                api: '/Home/GetTanMu',
+                token: 'tokendemo',
+                maximum: 3000,
+                //addition: '/Home/GetTanMu?aid=@videomodel.videoID'
+                //addition: ['/Home/GetTanMu?id=@videomodel.videoID']
+            }
+        });
+    </script>
+}

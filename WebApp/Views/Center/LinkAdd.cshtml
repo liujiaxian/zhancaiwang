@@ -1,0 +1,57 @@
+﻿@{
+    ViewBag.Title = "链接添加";
+    Layout = "~/Views/Shared/_LayoutCenter.cshtml";
+}
+<div style="margin-left: 20px; margin-top: 5px;">
+    <div class="layui-elem-quote">
+        <p>链接添加</p>
+    </div>
+    <br />
+    <div class="layui-form">
+        <div class="layui-form-item">
+            <label class="layui-form-label">标题</label>
+            <div class="layui-input-block">
+                <input type="text" id="txttitle" required lay-verify="required" placeholder="请输入链接标题" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">链接地址</label>
+            <div class="layui-input-block">
+                <textarea id="txturl" placeholder="请输入链接地址" class="layui-textarea" required lay-verify="required"></textarea>
+            </div>
+        </div>
+     
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="formDemo" onclick="btn_linkadd()">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section centerfooter{
+    <script type="text/javascript">
+        function btn_linkadd() {
+            var title = $("#txttitle").val();
+            var url = $("#txturl").val();
+
+            var pams = {
+                title: title,
+                url: encodeURIComponent(url)
+            };
+
+            $.post("/Center/LinkAdd", pams, function (serverData) {
+                var jsondata = $.parseJSON(serverData);
+                if (jsondata.status == 0) {
+                    layer.msg(jsondata.msg);
+                    window.location = "/center/linklist.html";
+                } else {
+                    layer.msg(jsondata.msg);
+                }
+            });
+        }
+
+    </script>
+}
